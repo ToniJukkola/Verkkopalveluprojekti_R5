@@ -15,23 +15,23 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="#">Etusivu</Link>
+                                <Link className="nav-link" aria-current="page" to="/">Etusivu</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="#">Ota yhteyttä</Link>
+                                <Link className="nav-link" to="/">Ota yhteyttä</Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button"
+                                <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuotteet
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="#">Kasvikategoria 1</Link></li>
-                                    <li><Link className="dropdown-item" to="#">Kasvikategoria 2</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Kasvikategoria 1</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Kasvikategoria 2</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
-                                    <li><Link className="dropdown-item" to="#">Tarvikkeet</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Tarvikkeet</Link></li>
                                 </ul>
                             </li>
                         </ul>
