@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function About() {
+export default function Contact() {
     return (
         <div>
            <main class="container">
-                Tietoa
+                Ota yhteyttä
             </main>
         </div>
     );
