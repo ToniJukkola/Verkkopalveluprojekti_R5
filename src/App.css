@@ -27,7 +27,9 @@ a {
     color: var(--accent-color);
 }
 
-a:hover { color: var(--accent-color-darker); }
+a:hover {
+    color: var(--accent-color-darker);
+}
 
 /* NAVBAR */
 
@@ -78,7 +80,7 @@ footer {
     padding-top: 1em;
 }
 
-footer > div {
+footer>div {
     margin: 1em;
 }
 
@@ -92,7 +94,7 @@ footer > div {
     font-size: 1.6em;
 }
 
-.footer-social-media > * {
+.footer-social-media>* {
     margin-right: 1em;
 }
 
@@ -103,7 +105,7 @@ footer > div {
     }
 
     .footer-social-media {
-    display: flex;
-    justify-content: space-evenly;
+        display: flex;
+        justify-content: space-evenly;
     }
 }
