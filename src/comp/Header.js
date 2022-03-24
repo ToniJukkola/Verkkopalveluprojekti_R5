@@ -2,10 +2,8 @@ import axios from "axios";
 import React from "react";
 import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import globalVar from "./globalVar";
+import { URL } from "./Globals";
 
-
-const URL = 'http://localhost/Verkkopalveluprojekti_R5_backend/';
 
 export default function Header() {
     const [categoryList, setCategoryList] = useState([]);
