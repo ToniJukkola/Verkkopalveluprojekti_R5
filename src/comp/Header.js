@@ -18,7 +18,7 @@ export default function Header() {
                                 <Link className="nav-link" aria-current="page" to="/">Etusivu</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/">Ota yhteyttä</Link>
+                                <Link className="nav-link" to="/ota-yhteytta">Ota yhteyttä</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button"

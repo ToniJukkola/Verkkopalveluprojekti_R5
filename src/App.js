@@ -8,10 +8,10 @@ import './App.css';
 
 import Footer from './comp/Footer';
 import Header from './comp/Header';
+
 import About from "./comp/pages/About";
-
 import Home from './comp/pages/Home';
-
+import Contact from './comp/pages/Contact';
 
 function App() {
   return (
@@ -21,7 +21,8 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/tietoa" element={<About />} />
+          <Route path="/ota-yhteytta" element={<Contact />} />
         </Routes>
         
         <Footer />

@@ -4,7 +4,7 @@ export default function Home() {
     return (
         <div>
            <main class="container">
-                TÄHÄN CONTENTTIA KAUHIASTI
+                Etusivu
             </main>
         </div>
     );
