@@ -12,6 +12,8 @@ import Header from './comp/Header';
 import About from "./comp/pages/About";
 import Home from './comp/pages/Home';
 import Contact from './comp/pages/Contact';
+import Product from './comp/pages/Product';
+import Category from "./comp/pages/Category";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tietoa" element={<About />} />
           <Route path="/ota-yhteytta" element={<Contact />} />
+          <Route path="/tuote" element={<Product />} />
+          <Route path="/kategoria" element={<Category />} />
         </Routes>
         
         <Footer />

@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function About() {
+export default function Home() {
     return (
         <div>
            <main className="container">
-                Tietoa
+                Tuotesivu
             </main>
         </div>
     );
