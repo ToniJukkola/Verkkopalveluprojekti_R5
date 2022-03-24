@@ -12,6 +12,10 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
 }
 
+h1 {
+    background-color: #d9c0c3;
+}
+
 .wrapper {
     min-height: 100vh;
     display: flex;
