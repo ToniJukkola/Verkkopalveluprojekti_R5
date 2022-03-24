@@ -2,16 +2,16 @@ import axios from "axios";
 import React from "react";
 import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import globalVar from "./globalVar";
 
 
-const URL = 'http://localhost/Verkkopalveluprojekti_R5_backend/get_categories.php';
-
+const URL = 'http://localhost/Verkkopalveluprojekti_R5_backend/';
 
 export default function Header() {
     const [categoryList, setCategoryList] = useState([]);
 
     useEffect(() => {
-        axios.get(URL)
+        axios.get(URL + "get_categories.php")
           .then((response) => {
             setCategoryList(response.data)
           }).catch(error => {
@@ -45,15 +45,8 @@ export default function Header() {
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {categoryList?.map(e => (
-                                    <li key={e.trnro}>{e.trnimi} </li>
+                                    <li key={e.trnro}><Link className="dropdown-item" to="/kategoria">{e.trnimi}</Link> </li>
                                 ))}
-
-                                    <li><Link className="dropdown-item" to="/kategoria">Kasvikategoria 1</Link></li>
-                                    <li><Link className="dropdown-item" to="/">Kasvikategoria 2</Link></li>
-                                    <li>
-                                        <hr className="dropdown-divider" />
-                                    </li>
-                                    <li><Link className="dropdown-item" to="/">Tarvikkeet</Link></li>
                                 </ul>
                             </li>
                         </ul>

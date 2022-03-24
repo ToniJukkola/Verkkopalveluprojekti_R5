@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Routes,
   Route,
@@ -9,11 +9,12 @@ import './App.css';
 import Footer from './comp/Footer';
 import Header from './comp/Header';
 
-import About from "./comp/pages/About";
-import Home from './comp/pages/Home';
-import Contact from './comp/pages/Contact';
-import Product from "./comp/pages/Product";
-import Category from "./comp/pages/Category";
+import About from "./pages/About";
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import Product from "./pages/Product";
+import Category from "./pages/Category";
+
 
 function App() {
   return (
