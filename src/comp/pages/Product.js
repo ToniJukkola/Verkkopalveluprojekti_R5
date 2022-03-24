@@ -1,5 +1,6 @@
 import React from "react";
 
+<<<<<<< HEAD
 export  default function Product() {
     return (
         <div>
@@ -9,3 +10,14 @@ export  default function Product() {
         </div>
     );
 }
+=======
+export default function Home() {
+    return (
+        <div>
+           <main className="container">
+                Tuotesivu
+            </main>
+        </div>
+    );
+}
+>>>>>>> 66a43e1f49814bc7b039abfaccefae112bb58f70
