@@ -1,7 +1,25 @@
+import axios from "axios";
 import React from "react";
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 
+
+const URL = 'http://localhost/Verkkopalveluprojekti_R5_backend/get_categories.php';
+
+
 export default function Header() {
+    const [categoryList, setCategoryList] = useState([]);
+
+    useEffect(() => {
+        axios.get(URL)
+          .then((response) => {
+            setCategoryList(response.data)
+          }).catch(error => {
+            alert(error);
+          });
+    },[]);
+
+
     return (
         <div>
            <nav className="navbar navbar-expand-lg navbar-light">
@@ -26,7 +44,11 @@ export default function Header() {
                                     Tuotteet
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="/">Kasvikategoria 1</Link></li>
+                                {categoryList?.map(e => (
+                                    <li key={e.trnro}>{e.trnimi} </li>
+                                ))}
+
+                                    <li><Link className="dropdown-item" to="/kategoria">Kasvikategoria 1</Link></li>
                                     <li><Link className="dropdown-item" to="/">Kasvikategoria 2</Link></li>
                                     <li>
                                         <hr className="dropdown-divider" />

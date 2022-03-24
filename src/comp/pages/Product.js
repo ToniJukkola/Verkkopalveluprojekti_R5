@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function About() {
+export  default function Product() {
     return (
         <div>
-           <main className="container">
-                Tietoa
+           <main class="container">
+                
             </main>
         </div>
     );
