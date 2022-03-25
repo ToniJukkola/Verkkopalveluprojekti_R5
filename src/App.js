@@ -22,6 +22,8 @@ function App() {
       <Router>
         <Header />
         
+        <main className="container">
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tietoa" element={<About />} />
@@ -30,6 +32,8 @@ function App() {
           <Route path="/kategoria" element={<Category />} />
           <Route path="/tuotteet" element={<Products />} />
         </Routes>
+        
+        </main>
         
         <Footer />
       </Router>

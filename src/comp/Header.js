@@ -19,7 +19,7 @@ export default function Header() {
 
 
     return (
-        <div>
+        <>
            <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">Kukkakauppa Oy</Link>
@@ -62,6 +62,6 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-        </div>
+        </>
     );
 }
