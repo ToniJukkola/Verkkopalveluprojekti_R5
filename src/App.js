@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import {
   Routes,
   Route,
-  BrowserRouter as Router
+  BrowserRouter as Router,
+  Link
 } from "react-router-dom";
 import './App.css';
 
@@ -21,9 +22,10 @@ function App() {
     <div className="wrapper">
       <Router>
         <Header />
-        
-        <main className="container">
+        <div><Link className="navbar-brand" to="/">Etusivu</Link> - - <Link className="navbar-brand" to="/tuote">Missä nyt</Link></div>
 
+        <main className="container">
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tietoa" element={<About />} />
