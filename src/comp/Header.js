@@ -45,6 +45,8 @@ export default function Header() {
                                 {categoryList?.map(e => (
                                     <li key={e.trnro}><Link className="dropdown-item" to="/kategoria">{e.trnimi}</Link> </li>
                                 ))}
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to="/tuotteet">Kaikki tuotteet</Link> </li>
                                 </ul>
                             </li>
                         </ul>

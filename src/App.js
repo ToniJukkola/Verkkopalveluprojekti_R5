@@ -14,7 +14,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Product from "./pages/Product";
 import Category from "./pages/Category";
-
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -26,9 +26,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tietoa" element={<About />} />
           <Route path="/ota-yhteytta" element={<Contact />} />
-          <Route path="tuotesivu" element={<Product />} />
-
+          <Route path="/tuote" element={<Product />} />
           <Route path="/kategoria" element={<Category />} />
+          <Route path="/tuotteet" element={<Products />} />
         </Routes>
         
         <Footer />
