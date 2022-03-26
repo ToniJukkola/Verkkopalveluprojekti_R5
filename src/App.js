@@ -43,8 +43,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/tietoa" element={<About />} />
             <Route path="/ota-yhteytta" element={<Contact />} />
-            <Route path="/tuote/" element={<Product />} />
-            <Route path="/kategoria/" element={<Category />} />
+            <Route path="/tuote" element={<Product />} />
+            <Route path="/kategoria" element={<Category catCheck={categoryCheck} />} />
             <Route path="/tuotteet" element={<Products />} />
           </Routes>
         
