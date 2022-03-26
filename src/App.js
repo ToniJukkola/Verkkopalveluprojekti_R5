@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Routes,
   Route,
@@ -18,22 +18,35 @@ import Category from "./pages/Category";
 import Products from "./pages/Products";
 
 function App() {
+  const [categoryCheck, setCategoryCheck] = useState(0);
+  const [productCheck, setProductCheck] = useState(0);
+
+
+  function handleClick(category,product){
+    if(category !== null){
+      setCategoryCheck(category);
+    }
+    if(product !== null){
+      setProductCheck(product);
+    }
+  }
+
   return (
     <div className="wrapper">
       <Router>
-        <Header />
-        <div><Link className="navbar-brand" to="/">Etusivu</Link> - - <Link className="navbar-brand" to="/tuote">Missä nyt</Link></div>
+        <Header handleClick = {handleClick} />
+        <div><Link className="navbar-brand" to="/">Etusivu</Link> - - <Link className="navbar-brand" to="/tuote">Missä nyt: {categoryCheck + " " + productCheck}</Link></div>
 
         <main className="container">
         
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tietoa" element={<About />} />
-          <Route path="/ota-yhteytta" element={<Contact />} />
-          <Route path="/tuote" element={<Product />} />
-          <Route path="/kategoria" element={<Category />} />
-          <Route path="/tuotteet" element={<Products />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tietoa" element={<About />} />
+            <Route path="/ota-yhteytta" element={<Contact />} />
+            <Route path="/tuote/" element={<Product />} />
+            <Route path="/kategoria/" element={<Category />} />
+            <Route path="/tuotteet" element={<Products />} />
+          </Routes>
         
         </main>
         

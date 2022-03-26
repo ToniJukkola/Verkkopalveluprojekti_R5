@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { URL } from "./Globals";
 
 
-export default function Header() {
+export default function Header(props) {
     const [categoryList, setCategoryList] = useState([]);
 
     useEffect(() => {
@@ -16,13 +16,13 @@ export default function Header() {
             alert(error);
           });
     },[]);
-
+    
 
     return (
         <>
            <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Kukkakauppa Oy</Link>
+                    <Link className="navbar-brand" to="/" onClick={ () => props.handleClick(0,null)}>Kukkakauppa Oy</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,8 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/">Etusivu</Link>
+                                <Link className="nav-link" aria-current="page" to="/" onClick={ () =>
+                                        props.handleClick(0,null)}>Etusivu</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/ota-yhteytta">Ota yhteyttä</Link>
@@ -43,10 +44,12 @@ export default function Header() {
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {categoryList?.map(e => (
-                                    <li key={e.trnro}><Link className="dropdown-item" to="/kategoria">{e.trnimi}</Link> </li>
+                                    <li key={e.trnro}><Link className="dropdown-item" to="/kategoria" onClick={ () =>
+                                        props.handleClick(e.trnro,null)} >{e.trnimi}</Link> </li>
                                 ))}
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item" to="/tuotteet">Kaikki tuotteet</Link> </li>
+                                <li><Link className="dropdown-item" to="/kategoria" onClick={ () =>
+                                        props.handleClick(0,null)}>Kaikki tuotteet</Link> </li>
                                 </ul>
                             </li>
                         </ul>
