@@ -6,6 +6,7 @@
     --gray-bg-color-lighter: #EEEEEE;
     --accent-color: #b99d9d;
     --accent-color-darker: #7c6c6c;
+    --accent-color-lighter: #E5D6D6;
 }
 
 body {
@@ -28,6 +29,22 @@ a {
 }
 
 a:hover { color: var(--accent-color-darker); }
+
+/* --- Buttons */
+
+.btn {
+    background-color: var(--accent-color-lighter);
+}
+
+.btn:hover {
+    background-color: var(--accent-color-darker);
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,.5);
+}
+
+.btn > i {
+    margin-right: .5em;
+}
 
 /* NAVBAR */
 
@@ -106,4 +123,41 @@ footer > div {
     display: flex;
     justify-content: space-evenly;
     }
+}
+
+/*  PRODCUT LIST */
+
+.product-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+/* --- Cards */
+
+.card {
+    border-radius: 15px;
+    padding: .4em;
+}
+
+.card-img-top {
+    padding: 1em 1em 0 1em;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-family: var(--secondary-font-family);
+}
+
+.card-text {
+    font-size: .9em;
+    margin-top: 1.5em;
+}
+
+.card-text > a {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: block;
 }
