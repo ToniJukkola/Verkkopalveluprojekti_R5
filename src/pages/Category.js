@@ -14,7 +14,7 @@ export default function Category(props) {
           }).catch(error => {
             alert(error);
           });
-    }, []);
+    });
 
     return (
         <>
