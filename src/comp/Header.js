@@ -1,22 +1,10 @@
-import axios from "axios";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { URL } from "./Globals";
+
 
 
 export default function Header(props) {
-    const [categoryList, setCategoryList] = useState([]);
-
-    useEffect(() => {
-        axios.get(URL + "get_categories.php")
-          .then((response) => {
-            setCategoryList(response.data)
-          }).catch(error => {
-            alert(error);
-          });
-    },[]);
     
-
     return (
         <>
            <nav className="navbar navbar-expand-lg navbar-light">
@@ -42,7 +30,7 @@ export default function Header(props) {
                                     Tuotteet
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {categoryList?.map(e => (
+                                {props.categoryList?.map(e => (
                                     <li key={e.trnro}><Link className="dropdown-item" to="/kategoria" onClick={ () =>
                                         props.handleClick(e.trnro,null)} >{e.trnimi}</Link> </li>
                                 ))}

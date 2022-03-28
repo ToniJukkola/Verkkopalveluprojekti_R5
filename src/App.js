@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { URL } from "./comp/Globals";
 import {
   Routes,
   Route,
@@ -20,6 +22,27 @@ import Products from "./pages/Products";
 function App() {
   const [categoryCheck, setCategoryCheck] = useState(0);
   const [productCheck, setProductCheck] = useState(0);
+  const [categoryList, setCategoryList] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL + "get_categories.php")
+      .then((response) => {
+        setCategoryList(response.data)
+      }).catch(error => {
+        alert(error);
+      });
+  },[categoryCheck,productCheck]);
+
+  useEffect(() => {
+    axios.get(URL + "get_products.php?id=" + categoryCheck
+    )
+      .then((response) => {
+        setProductList(response.data)
+      }).catch(error => {
+        alert(error);
+      });
+  },[categoryCheck,productCheck]);
 
 
   function handleClick(category,product){
@@ -34,7 +57,7 @@ function App() {
   return (
     <div className="wrapper">
       <Router>
-        <Header handleClick = {handleClick} />
+        <Header handleClick = {handleClick} categoryList= {categoryList} />
         <div><Link className="navbar-brand" to="/">Etusivu</Link> - - <Link className="navbar-brand" to="/tuote">Missä nyt: {categoryCheck + " " + productCheck}</Link></div>
 
         <main className="container">
@@ -44,7 +67,7 @@ function App() {
             <Route path="/tietoa" element={<About />} />
             <Route path="/ota-yhteytta" element={<Contact />} />
             <Route path="/tuote" element={<Product />} />
-            <Route path="/kategoria" element={<Category catCheck={categoryCheck} />} />
+            <Route path="/kategoria" element={<Category productList= {productList} />} />
             <Route path="/tuotteet" element={<Products />} />
           </Routes>
         
