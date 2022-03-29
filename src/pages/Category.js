@@ -11,7 +11,6 @@ export default function Category(props) {
   let params = useParams();
 
   useEffect(() => {
-    console.log(params);
     if (params.trnro > 0) {
       axios.get(URL + "get_products.php/" + params.trnro
       )
