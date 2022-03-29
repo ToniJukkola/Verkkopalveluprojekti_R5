@@ -29,7 +29,7 @@ export default function Category(props) {
         {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
         {productList.products?.map(e => (
           <div className="card" key={e.tuotenro}>
-            <img src={require(".././images/tuotenro_1.jpg")} className="card-img-top" alt="" />
+            <img src={require(".././images/tuotenro_" + e.tuotenro + ".jpg")} className="card-img-top" alt="" />
             <div className="card-body">
               <div>
                 <h5 className="card-title">{e.tuotenimi}</h5>
