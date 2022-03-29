@@ -1,43 +1,37 @@
-import React from "react";
-
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-
-import Footer from './comp/Footer';
-import Header from './comp/Header';
-
-import About from "./pages/About";
-import Home from './pages/Home';
-import Contact from './pages/Contact';
-import Product from "./pages/Product";
-import Category from "./pages/Category";
+// Import components
+import Footer from "./comp/Footer";
+import Navbar from "./comp/Navbar";
+// Import pages
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import Products from "./pages/Products";
+import ProductsAll from "./pages/ProductsAll";
+
+const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
 function App() {
   return (
-    <div className="wrapper">
-      <Router>
-        <Header />
-        <main className="container">
-        
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tietoa" element={<About />} />
-            <Route path="/ota-yhteytta" element={<Contact />} />
-            <Route path="/tuote/:trnimi" element={<Product />} />
-            <Route path="/kategoria/:trnro" element={<Category />} />
-            <Route path="/tuotteet" element={<Products />} />
-          </Routes>
-        
-        </main>
-        
-        <Footer />
-      </Router>
-    </div>
+    <>
+      <div className="wrapper">
+        <Router>
+          <Navbar url={BACKEND_URL} />
+          <main className="container">
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ota-yhteytta" element={<Contact />} />
+              <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} />} />
+              <Route path="/tuotteet/" element={<ProductsAll url={BACKEND_URL} />} />
+            </Routes>
+
+          </main>
+
+          <Footer />
+        </Router>
+      </div>
+    </>
   );
 }
 
