@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar({ url }) {
+export default function Navbar({ url, shopname }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Navbar({ url }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Kukkakauppa Oy</Link>
+        <Link className="navbar-brand" to="/">{shopname}</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
