@@ -10,7 +10,7 @@ export default function Admin() {
                <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
             </ul>
            <ul> 
-               <button type="button" className="btn btn-outline-dark">Poista tuote</button>
+                <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
             </ul>
             </div>
         </>

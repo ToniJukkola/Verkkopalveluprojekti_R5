@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 export default function Add() {
     return (
         <>
             <h1>Tuotteiden lisääminen</h1>
             <ul> 
-               <button type="button" className="btn btn-outline-dark">Lisää tuote</button>
+               <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
             </ul>
            <ul> 
-               <button type="button" className="btn btn-outline-dark">Poista tuote</button>
+                <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
             </ul><br></br>
                 <ul>
                     <h4>Uusi tuote:</h4>
@@ -17,7 +18,7 @@ export default function Add() {
                     <textarea placeholder="Nimi"></textarea>
                 </ul>
                 <ul>
-                    <textarea type="textarea" placeholder="Kuvaus"></textarea>
+                    <textarea placeholder="Kuvaus"></textarea>
                 </ul>
                 <ul>
                     <textarea placeholder="Hoito-ohje"></textarea>
