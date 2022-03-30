@@ -5,10 +5,10 @@ export default function Admin() {
         <>
             <h1>Tervetuloa ylläpitäjä!</h1>
             <ul> 
-               <button type="button" className="btn btn-dark">Lisää tuote</button>
+               <button type="button" className="btn btn-outline-dark">Lisää tuote</button>
             </ul>
            <ul> 
-               <button type="button" className="btn btn-dark">Poista tuote</button>
+               <button type="button" className="btn btn-outline-dark">Poista tuote</button>
             </ul>
         </>
     );
