@@ -11,9 +11,10 @@ export default function Footer() {
             <div>
                 <div className="footer-title">Sivukartta</div>
                 <ul className="list-unstyled">
-                    <a href="https://google.com"><li>Viherkasvit</li></a>
-                    <a href="https://google.com"><li>Mehikasvit</li></a>
-                    <a href="https://google.com"><li>Kaktukset</li></a>
+                    <a href="../tuotteet/1"><li>Viherkasvit</li></a>
+                    <a href="../tuotteet/2"><li>Mehikasvit</li></a>
+                    <a href="../tuotteet/3"><li>Kaktukset</li></a>
+                    <a href="../tuotteet/4"><li>Tarvikkeet</li></a>
                 </ul>
             </div>
             <div>
