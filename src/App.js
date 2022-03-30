@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import ProductsAll from "./pages/ProductsAll";
+import Breadcrumb from './comp/Breadcrumb';
 
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
@@ -17,6 +18,7 @@ function App() {
       <div className="wrapper">
         <Router>
           <Navbar url={BACKEND_URL} />
+          <Breadcrumb />
           <main className="container">
 
             <Routes>
