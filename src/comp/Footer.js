@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Footer() {
+export default function Footer({shopname}) {
     return (
         <footer className="container-fluid">
             <div>
-                <div className="footer-title">Kukkakauppa Oy</div>
+                <div className="footer-title">{shopname}</div>
                 <p>Katunimi 13,<br />
                     00000 Kaupunki</p>
             </div>

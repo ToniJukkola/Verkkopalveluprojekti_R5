@@ -11,6 +11,7 @@ import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
 import Breadcrumb from './comp/Breadcrumb';
 
+const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <>
       <div className="wrapper">
         <Router>
-          <Navbar url={BACKEND_URL} />
+          <Navbar url={BACKEND_URL} shopname={SHOP_NAME} />
           <Breadcrumb />
           <main className="container">
 
@@ -32,7 +33,7 @@ function App() {
 
           </main>
 
-          <Footer />
+          <Footer shopname={SHOP_NAME} />
         </Router>
       </div>
     </>
