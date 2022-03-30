@@ -37,7 +37,7 @@ a:hover {
 
 /* --- Buttons */
 
-.btn {
+.btn-accent {
   background-color: var(--accent-color-lighter);
 }
 

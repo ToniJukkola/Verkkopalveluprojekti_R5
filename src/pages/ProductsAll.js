@@ -30,7 +30,7 @@ export default function ProductsAll({ url }) {
                                 <Link to={"/tuote/" + product.tuotenro}>Lue lisää</Link>
                             </p>
 
-                            <a href="#" className="btn"><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</a>
+                            <a href="#" className="btn btn-accent"><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</a>
                         </div>
                     </div>
                 ))}
