@@ -19,8 +19,10 @@ function App() {
     <>
       <div className="wrapper">
         <Router>
-          <Navbar url={BACKEND_URL} shopname={SHOP_NAME} />
-          <Breadcrumb />
+          <header>
+            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} />
+            <Breadcrumb />
+          </header>
           <main className="container">
 
             <Routes>
