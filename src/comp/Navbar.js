@@ -57,7 +57,7 @@ export default function Navbar({ url }) {
             <button className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></button>
           </form>
           <div className="navbar-icons">
-            <i className="bi bi-person-circle"></i>
+            <Link className="bi bi-person-circle" to={"/admin/"}></Link>
             <i className="bi bi-cart"></i>
           </div>
         </div>
