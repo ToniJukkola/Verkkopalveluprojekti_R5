@@ -22,6 +22,7 @@ export default function Product({ url }) {
     {/* Kuva tähän jee */}
     <h4>{product.hinta}</h4>
     <p>{product.tuotekuvaus}</p>
+    <p>{product.ohje}</p>
     </>
   )
 }
