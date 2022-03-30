@@ -10,6 +10,7 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
+import Add from "./pages/Add";
 import Breadcrumb from './comp/Breadcrumb';
 
 const SHOP_NAME = "Vihervaja";
@@ -32,7 +33,8 @@ function App() {
               <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} />} />
               <Route path="/tuotteet/" element={<ProductsAll url={BACKEND_URL} />} />
               <Route path="/tuote/:productID" element={<Product url={BACKEND_URL} />} />
-              <Route path="/Admin" element={<Admin />} />
+              <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
+              <Route path="/Add" element={<Add url={BACKEND_URL} />} />
             </Routes>
 
           </main>
