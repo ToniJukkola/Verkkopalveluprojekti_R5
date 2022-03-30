@@ -7,6 +7,7 @@ import Navbar from "./comp/Navbar";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Products from "./pages/Products";
+import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
 import Breadcrumb from './comp/Breadcrumb';
@@ -30,6 +31,7 @@ function App() {
               <Route path="/ota-yhteytta" element={<Contact />} />
               <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} />} />
               <Route path="/tuotteet/" element={<ProductsAll url={BACKEND_URL} />} />
+              <Route path="/tuote/:productID" element={<Product url={BACKEND_URL} />} />
               <Route path="/Admin" element={<Admin />} />
             </Routes>
 
