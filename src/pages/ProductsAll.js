@@ -14,7 +14,8 @@ export default function ProductsAll({ url }) {
     }, [])
 
     return (
-        <>
+
+        <main className="container">
             <h1>Kaikki tuotteet</h1>
             <div className="product-list-wrapper">
                 {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
@@ -36,6 +37,6 @@ export default function ProductsAll({ url }) {
                 ))}
                 {/* TUOTEKORTTIEN MAPPAUS PÄÄTTYY */}
             </div>
-        </>
+        </main>
     )
 }

@@ -20,7 +20,8 @@ export default function Products({ url }) {
 
 
   return (
-    <>
+    
+    <main className="container">
     <h1>{categoryName}</h1>
     <div className="product-list-wrapper">
       {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
@@ -42,6 +43,6 @@ export default function Products({ url }) {
       ))}
       {/* TUOTEKORTTIEN MAPPAUS PÄÄTTYY */}
     </div>
-    </>
+    </main>
   )
 }
