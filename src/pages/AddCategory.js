@@ -15,6 +15,15 @@ export default function AddCategory() {
                 <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
             </ul>
             <br></br>
+            <ul>
+                    <h4>Uusi tuoteryhmä:</h4>
+                </ul>
+                <ul>
+                    <textarea placeholder="Tuoteryhmän nimi"></textarea>
+                </ul>
+                <ul>
+                    <button type="button" className="btn btn-outline-dark">Lisää uusi tuoteryhmä</button>
+                </ul>
         </>
         );
     }
