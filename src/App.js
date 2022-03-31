@@ -26,19 +26,19 @@ function App() {
         <Router>
           <header>
             <Navbar url={BACKEND_URL} shopname={SHOP_NAME} />
-            <Breadcrumb />
+            <Breadcrumb url={BACKEND_URL} />
           </header>
 
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/ota-yhteytta" element={<Contact />} />
               <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} />} />
-              <Route path="/tuotteet/" element={<ProductsAll url={BACKEND_URL} />} />
-              <Route path="/tuote/:productID" element={<Product url={BACKEND_URL} />} />
+              <Route path="/tuotteet/kaikki" element={<ProductsAll url={BACKEND_URL} />} />
+              <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} />} />
               <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
-              <Route path="/Add" element={<Add url={BACKEND_URL} />} />
-              <Route path="/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
-              <Route path="/Delete" element={<Delete url={BACKEND_URL} />} />
+              <Route path="/Admin/Add" element={<Add url={BACKEND_URL} />} />
+              <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
+              <Route path="/Admin/Delete" element={<Delete url={BACKEND_URL} />} />
             </Routes>
 
           <Footer shopname={SHOP_NAME} />

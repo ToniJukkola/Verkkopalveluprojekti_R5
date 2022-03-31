@@ -28,7 +28,7 @@ export default function ProductsAll({ url }) {
                                 <h6 className="card-title">{product.hinta}</h6>
                             </div>
                             <p className="card-text">{product.tuotekuvaus}
-                                <Link to={"/tuote/" + product.tuotenro}>Lue lisää</Link>
+                                <Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>Lue lisää</Link>
                             </p>
 
                             <a href="#" className="btn btn-accent"><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</a>

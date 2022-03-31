@@ -47,7 +47,7 @@ export default function Navbar({ url, shopname }) {
                 ))}
                 {/* Tuotekategorioiden mappaus päättyy */}
                 <hr className="dropdown-divider" />
-                <Link className="dropdown-item" to={"/tuotteet/"}>Kaikki tuotteet</Link>
+                <Link className="dropdown-item" to={"/tuotteet/kaikki"}>Kaikki tuotteet</Link>
               </ul>
             </li>
           </ul>
