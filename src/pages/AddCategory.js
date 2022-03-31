@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function AddCategory() {
     return (
-        <>
+        <main className="container">
             <h1>Kategorioiden lisääminen</h1>
             <ul> 
                <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
@@ -24,6 +24,6 @@ export default function AddCategory() {
                 <ul>
                     <button type="button" className="btn btn-outline-dark">Lisää uusi tuoteryhmä</button>
                 </ul>
-        </>
+        </main>
         );
     }

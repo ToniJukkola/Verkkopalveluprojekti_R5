@@ -16,7 +16,7 @@ export default function Delete({ url }) {
     
     
     return (
-        <>
+        <main className="container">
              <h1>Tuotteiden poistaminen</h1>
              <ul> 
                <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
@@ -42,6 +42,6 @@ export default function Delete({ url }) {
             <ul>
             <button type="button" className="btn btn-outline-dark">Poista tuote</button>
             </ul>
-        </>
+        </main>
     );
 }

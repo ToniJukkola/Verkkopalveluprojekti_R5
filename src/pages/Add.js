@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom'
         }, [])
 
     return (
-        <>
+        <main className="container">
             <h1>Tuotteiden lisääminen</h1>
             <ul> 
                <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
@@ -57,6 +57,6 @@ import { Link } from 'react-router-dom'
                 <ul>
                     <button type="button" className="btn btn-outline-dark">Lisää uusi tuote</button>
                 </ul>
-        </>
+        </main>
     );
 }
