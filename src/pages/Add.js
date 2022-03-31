@@ -51,7 +51,6 @@ import { Link } from 'react-router-dom'
                     {categories?.map(category => (
                     <option key={category.trnro}>{category.trnimi}
                         </option>))};
-                        
                     </select>
                 </ul>
                 <ul>

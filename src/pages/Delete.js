@@ -27,9 +27,10 @@ export default function Delete({ url }) {
                  <ul> 
                 <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
                 </ul>
-            
-            
-            <h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4>
+            <br />
+            <form>
+                <ul><h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4></ul>
+            </form>
             <div>
                 {products?.map(product => (
                     <div key={product.tuotenro}>

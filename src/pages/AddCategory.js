@@ -22,7 +22,7 @@ export default function AddCategory() {
                     <textarea placeholder="Tuoteryhmän nimi"></textarea>
                 </ul>
                 <ul>
-                    <button type="button" className="btn btn-outline-dark">Lisää uusi tuoteryhmä</button>
+                    <button type="button" className="btn btn-outline-dark" name="newcategory">Lisää uusi tuoteryhmä</button>
                 </ul>
         </main>
         );
