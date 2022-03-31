@@ -24,6 +24,9 @@ export default function Delete({ url }) {
                 <ul> 
                 <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
                  </ul>
+                 <ul> 
+                <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
+                </ul>
             
             
             <h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4>

@@ -1,11 +1,10 @@
-import React from "react"
+import React from "react";
 import { Link } from 'react-router-dom'
 
-export default function Admin() {
+export default function AddCategory() {
     return (
         <>
-        <div>
-            <h1>Tervetuloa ylläpitäjä!</h1>
+            <h1>Kategorioiden lisääminen</h1>
             <ul> 
                <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
             </ul>
@@ -15,7 +14,7 @@ export default function Admin() {
             <ul> 
                 <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
             </ul>
-            </div>
+            <br></br>
         </>
-    );
-}
+        );
+    }

@@ -10,7 +10,11 @@ export default function Add() {
             </ul>
            <ul> 
                 <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
-            </ul><br></br>
+            </ul>
+            <ul> 
+                <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
+            </ul>
+            <br></br>
                 <ul>
                     <h4>Uusi tuote:</h4>
                 </ul>

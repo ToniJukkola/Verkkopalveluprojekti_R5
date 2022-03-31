@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
 import Add from "./pages/Add";
+import AddCategory from "./pages/AddCategory";
 import Delete from "./pages/Delete";
 import Breadcrumb from './comp/Breadcrumb';
 
@@ -36,6 +37,7 @@ function App() {
               <Route path="/tuote/:productID" element={<Product url={BACKEND_URL} />} />
               <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
               <Route path="/Add" element={<Add url={BACKEND_URL} />} />
+              <Route path="/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
               <Route path="/Delete" element={<Delete url={BACKEND_URL} />} />
             </Routes>
 
