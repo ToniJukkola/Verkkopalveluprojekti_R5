@@ -12,7 +12,7 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
-import Add from "./pages/Add";
+import AddProduct from "./pages/AddProduct";
 import AddCategory from "./pages/AddCategory";
 import Delete from "./pages/Delete";
 
@@ -36,7 +36,7 @@ function App() {
               <Route path="/tuotteet/kaikki" element={<ProductsAll url={BACKEND_URL} />} />
               <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} />} />
               <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
-              <Route path="/Admin/Add" element={<Add url={BACKEND_URL} />} />
+              <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
               <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
               <Route path="/Admin/Delete" element={<Delete url={BACKEND_URL} />} />
             </Routes>

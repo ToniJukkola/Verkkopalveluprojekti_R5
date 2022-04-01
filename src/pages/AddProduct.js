@@ -19,13 +19,13 @@ import { Link } from 'react-router-dom'
         <main className="container">
             <h1>Tuotteiden lisääminen</h1>
             <ul> 
-               <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
+               <Link className="btn btn-outline-dark" to={"/admin/addproduct/"}>Lisää tuote</Link>
             </ul>
            <ul> 
-                <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/delete/"}>Poista tuote</Link>
             </ul>
             <ul> 
-                <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/addcategory/"}>Lisää tuoteryhmä</Link>
             </ul>
             <br></br>
                 <ul>

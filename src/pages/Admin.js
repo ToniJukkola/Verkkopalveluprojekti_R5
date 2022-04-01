@@ -6,14 +6,15 @@ export default function Admin() {
         <main className="container">
         <div>
             <h1>Tervetuloa ylläpitäjä!</h1>
+            
             <ul> 
-               <Link className="btn btn-outline-dark" to={"/add/"}>Lisää tuote</Link>
+               <Link className="btn btn-outline-dark" to={"/admin/addproduct/"}>Lisää tuote</Link>
             </ul>
            <ul> 
-                <Link className="btn btn-outline-dark" to={"/delete/"}>Poista tuote</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/delete/"}>Poista tuote</Link>
             </ul>
             <ul> 
-                <Link className="btn btn-outline-dark" to={"/addcategory/"}>Lisää tuoteryhmä</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/addcategory/"}>Lisää tuoteryhmä</Link>
             </ul>
             </div>
         </main>
