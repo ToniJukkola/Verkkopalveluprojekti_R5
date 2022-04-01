@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
     
     export default function AddCategory({ url }) {
         const [categories, setCategories] = useState([]);
+        
         useEffect(() => {
             axios.get(url + "products/get_categories.php")
                 .then((response) => {

@@ -4,7 +4,6 @@ import './App.css';
 import Footer from "./comp/Footer";
 import Navbar from "./comp/Navbar";
 import Breadcrumb from './comp/Breadcrumb';
-import Hero from './comp/Hero';
 // Import pages
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
