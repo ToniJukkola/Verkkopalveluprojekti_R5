@@ -2,11 +2,10 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function AddCategory({ url }) {
+export default function AddnewCategory({ url }) {
     const [categories, setCategories] = useState([]);
-    const [tuoteryhma, setTuoteryhma] = useState([]);
+    const [newCategory, setnewCategory] = useState([]);
 
-        
         useEffect(() => {
             axios.get(url + "products/get_categories.php")
                 .then((response) => {
@@ -18,15 +17,15 @@ export default function AddCategory({ url }) {
 
         function AddTrnimi(e) {
             e.preventDefault();
-            const json = JSON.stringify({trnimi:tuoteryhma});
+            const json = JSON.stringify({trnimi:newCategory});
             axios.post(url + 'add/add_category.php',json, {
               headers: {
                 'Content-Type' : 'application/json'
               }
             })
             .then((response) => {
-              setTuoteryhma(tuoteryhma => [...tuoteryhma,response.data]);
-              setTuoteryhma('');
+              setnewCategory(newCategory => [...newCategory,response.data]);
+              setnewCategory('');
             }).catch(error => {
               alert(error.response ? error.response.data.error : error);
             })
@@ -42,7 +41,7 @@ export default function AddCategory({ url }) {
                 <Link className="btn btn-outline-dark" to={"/admin/delete/"}>Poista tuote</Link>
             </ul>
             <ul> 
-                <Link className="btn btn-outline-dark" to={"/admin/addcategory/"}>Lisää tuoteryhmä</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/addnewCategory/"}>Lisää tuoteryhmä</Link>
             </ul>
             <br></br>
             <form onSubmit={AddTrnimi}>
@@ -50,17 +49,17 @@ export default function AddCategory({ url }) {
                     <h4>Uusi tuoteryhmä:</h4>
                  </ul> 
                 <ul>
-                    <textarea value={tuoteryhma} placeholder="Uusi tuoteryhmä" type="text" onChange={e => setTuoteryhma(e.target.value)}></textarea>
+                    <input className="form-control" value={newCategory} placeholder="Uusi tuoteryhmä" type="text" onChange={e => setnewCategory(e.target.value)} />
                 </ul>
                 <ul>
-                    <button type="submit" className="btn btn-outline-dark" name="newcategory">Lisää uusi tuoteryhmä</button>
+                    <button type="submit" className="btn btn-outline-dark" name="newnewCategory">Lisää uusi tuoteryhmä</button>
                 </ul>
-                <ul>
-                   {categories?.map(category =>(
-                     <li key={category.trnro}>{category.trnimi}</li>
+            </form>
+            <ul>
+                   {categories?.map(newCategory =>(
+                     <li key={newCategory.trnro}>{newCategory.trnimi}</li>
                    ))}
                  </ul>
-            </form>
         </main>
         );
     }
