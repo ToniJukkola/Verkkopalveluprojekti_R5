@@ -28,20 +28,21 @@ export default function Breadcrumb({url}) {
 
 
     const pathnames = location.pathname.split("/").filter(x => x);
-
+    let newOrderPathnames = new Array();
+    for (let index = 0; index < pathnames.length; index += 2) {
+      newOrderPathnames[index] = new Array ( pathnames[index],pathnames[index + 1])
+    }
   return (
     <div className="breadcrumb">
       <Link to={"/"}>Etusivu</Link>
-      {pathnames.map((pname, index) => {
-        let calcIndex = index + 1;
-        const routeTo = `/${pathnames.slice(0,calcIndex + 1).join("/")}`;
-        const isLast = index === pathnames.length - 1;
-        console.log(pname);
+      {newOrderPathnames?.map((pname, index) => {
+        const routeTo = `/${newOrderPathnames.slice(0, index + 1).join("/")}`;
+        const isLast = index === newOrderPathnames.length - 1;
         return isLast ? (
-          <span key={index}> {pname} </span>
-        ) : (
-          <Link key={index} to={routeTo}>{pname}</Link>
-        )
+          <span key={index}> {categories[(newOrderPathnames[index][1])-1]?.trnimi} </span>
+        ) : index % 2 === 0 ? (
+          <Link key={index} to={routeTo}>{categories[(newOrderPathnames[index][1])-1]?.trnimi}</Link>
+        ) : ("");
       })}
     </div>
   )
