@@ -1,17 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Breadcrumb({url}) {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  let params = useParams();
+  let location = useLocation();
 
   useEffect(() => {
     axios.get(url + "products/get_categories.php")
       .then((response) => {
         const json = response.data;
-        console.log(params);
         setCategories(json);
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
@@ -27,13 +26,23 @@ export default function Breadcrumb({url}) {
         })
   }, [])
 
-  useEffect(() => {
-    console.log(params);
-    }, [params])
+
+    const pathnames = location.pathname.split("/").filter(x => x);
 
   return (
     <div className="breadcrumb">
-      {categories[params.categoryID]?.trnimi}
+      <Link to={"/"}>Etusivu</Link>
+      {pathnames.map((pname, index) => {
+        let calcIndex = index + 1;
+        const routeTo = `/${pathnames.slice(0,calcIndex + 1).join("/")}`;
+        const isLast = index === pathnames.length - 1;
+        console.log(pname);
+        return isLast ? (
+          <span key={index}> {pname} </span>
+        ) : (
+          <Link key={index} to={routeTo}>{pname}</Link>
+        )
+      })}
     </div>
   )
 }
