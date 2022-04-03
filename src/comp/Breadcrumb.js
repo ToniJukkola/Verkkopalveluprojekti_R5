@@ -26,8 +26,8 @@ export default function Breadcrumb({url}) {
         })
   }, [])
 
+  // Tämä tarkistaa pitääkö polun näyttönimi hakea muualta vai riittääkö sen oma nimi
   function typeCheck(item,index,pname) {
-
     if(item === "tuotteet") {
       return categories[(newOrderPathnames[index][1])-1]?.trnimi;
     } else if (item === "tuote") {
@@ -35,25 +35,26 @@ export default function Breadcrumb({url}) {
     } else {
       return pname;
     }
-    
   }
-
+    // Otetaan nykyinen sijainti ja pilkotaan se taulukkoon
     const pathnames = location.pathname.split("/").filter(x => x);
     let newOrderPathnames = new Array();
     for (let index = 0; index < pathnames.length; index += 2) {
-      newOrderPathnames[index] = new Array ( pathnames[index],pathnames[index + 1])
+      newOrderPathnames[index] = new Array ( pathnames[index],pathnames[index + 1]);
     }
+
+    // isLast tarkistaa onko kyseessä taulukon viimeinen polku. Jos polku on viimeinen, se esitetään tekstimuodossa. 
   return (
-    <div className="breadcrumb">
-      <Link to={"/"}>Etusivu</Link>
+    <ol className="breadcrumb">
+      <Link className='breadcrumb-item' to={"/"}>Etusivu</Link>
       {newOrderPathnames?.map((pname, index) => {
         const isLast = index === newOrderPathnames.length - 1;
         return isLast ? (
-          <span key={index}> {typeCheck(pname[0],index,pname)} </span>
+          <span className='breadcrumb-item active' key={index}> {typeCheck(pname[0], index, pname)} </span>
         ) : pname[0] === "tuotteet" || "tuote" ? (
-          <Link key={index} to={"/" + pname[0] + "/" + pname[1]}>{typeCheck(pname[0],index ,pname)}</Link>
+          <Link className='breadcrumb-item' key={index} to={"/" + pname[0] + "/" + pname[1]}>{typeCheck(pname[0], index, pname)}</Link>
         ) : ("");
       })}
-    </div>
+    </ol>
   )
 }
