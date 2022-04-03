@@ -18,7 +18,7 @@ export default function AddCategory({ url }) {
   function AddTrnimi(e) {
     e.preventDefault();
     const json = JSON.stringify({ trnimi: newCategory });
-    axios.post(url + 'add/add_category.php', json, {
+    axios.post(url + 'admin/add_category.php', json, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -37,35 +37,39 @@ export default function AddCategory({ url }) {
       })
   }
 
+  function deleteCategory(trnro) {
+    const json = JSON.stringify({ trnro: trnro });
+    axios.post(url + "admin/delete_category.php", json, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response) => {
+        const newCategoryList = categories.filter((category) => category.trnro !== trnro);
+        setCategories(newCategoryList);
+      }).catch(error => {
+        alert(error.response ? error.response.data.error : error);
+      });
+  }
+
   return (
     <main className="container">
-      <h1>Tuoteryhmien lisääminen</h1>
-      <ul>
-        <Link className="btn btn-outline-dark" to={"/admin/addproduct/"}>Lisää tuote</Link>
-      </ul>
-      <ul>
-        <Link className="btn btn-outline-dark" to={"/admin/delete/"}>Poista tuote</Link>
-      </ul>
-      <ul>
-        <Link className="btn btn-outline-dark" to={"/admin/addnewCategory/"}>Lisää tuoteryhmä</Link>
-      </ul>
-      <br></br>
-      <form onSubmit={AddTrnimi}>
-        <ul>
-          <h4>Uusi tuoteryhmä:</h4>
+      <h1>Tuoteryhmien hallinta</h1>
+      <Link className="p-3" to={"/admin/"}>&larr; Takaisin ylläpidon etusivulle</Link>
+      <div className="mt-5 col-lg-6 col-sm">
+        <form className="mb-5" onSubmit={AddTrnimi}>
+            <h4>Uusi tuoteryhmä:</h4>
+            <input className="form-control" value={newCategory} placeholder="Uusi tuoteryhmä" type="text" onChange={e => setnewCategory(e.target.value)} />
+            <button type="submit" className="mt-3 btn btn-outline-dark" name="newnewCategory">Lisää uusi tuoteryhmä</button>
+        </form>
+
+        <h4>Poista tuoteryhmä</h4>
+        <ul className="list-group">
+          {categories?.map(category => (
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={category.trnro}>{category.trnimi} <button className="btn btn-dark p-1 m-2" role="button" onClick={() => deleteCategory(category.trnro)}>Poista</button></li>
+          ))}
         </ul>
-        <ul>
-          <input className="form-control" value={newCategory} placeholder="Uusi tuoteryhmä" type="text" onChange={e => setnewCategory(e.target.value)} />
-        </ul>
-        <ul>
-          <button type="submit" className="btn btn-outline-dark" name="newnewCategory">Lisää uusi tuoteryhmä</button>
-        </ul>
-      </form>
-      <ul>
-        {categories?.map(category => (
-          <li key={category.trnro}>{category.trnimi}</li>
-        ))}
-      </ul>
+      </div>
     </main>
   );
 }

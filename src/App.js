@@ -13,7 +13,7 @@ import ProductsAll from "./pages/ProductsAll";
 import Admin from "./pages/Admin";
 import AddProduct from "./pages/AddProduct";
 import AddCategory from "./pages/AddCategory";
-import Delete from "./pages/Delete";
+import DeleteProduct from "./pages/DeleteProduct";
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
@@ -37,7 +37,7 @@ function App() {
               <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
               <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
               <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
-              <Route path="/Admin/Delete" element={<Delete url={BACKEND_URL} />} />
+              <Route path="/Admin/DeleteProduct" element={<DeleteProduct url={BACKEND_URL} />} />
             </Routes>
 
           <Footer shopname={SHOP_NAME} />
