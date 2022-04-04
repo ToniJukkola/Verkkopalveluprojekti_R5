@@ -20,26 +20,27 @@ export default function AddCategory({ url }) {
         <main className="container">
             <h1>Tuotteiden lisääminen</h1>
             <Link className="p-3" to={"/admin/"}>&larr; Takaisin ylläpidon etusivulle</Link>
-            <ul>
+            <ul><br></br>
                 <h4>Uusi tuote:</h4>
             </ul>
+            <div className="mt-5 col-lg-6 col-sm">
             <ul>
-                <textarea placeholder="Nimi"></textarea>
+                <textarea className="form-control" placeholder="Nimi"></textarea>
             </ul>
             <ul>
-                <textarea placeholder="Kuvaus"></textarea>
+                <textarea className="form-control" placeholder="Kuvaus"></textarea>
             </ul>
             <ul>
-                <textarea placeholder="Hoito-ohje"></textarea>
+                <textarea className="form-control" placeholder="Hoito-ohje"></textarea>
             </ul>
             <ul>
-                <textarea placeholder="Tieteellinen nimi"></textarea>
+                <textarea className="form-control" placeholder="Tieteellinen nimi"></textarea>
             </ul>
             <ul>
-                <input type="number" step="0.01" placeholder="Hinta"></input>
+                <input className="form-control" type="number" step="0.01" placeholder="Hinta"></input>
             </ul>
             <ul>
-                <select placeholder="Kategoria">
+                <select>
                     {categories?.map(category => (
                         <option key={category.trnro}>{category.trnimi}
                         </option>))};
@@ -48,6 +49,7 @@ export default function AddCategory({ url }) {
             <ul>
                 <button type="button" className="btn btn-outline-dark">Lisää uusi tuote</button>
             </ul>
+           </div> 
         </main>
     );
 }
