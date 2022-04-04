@@ -21,7 +21,7 @@ export default function ProductsAll({ url }) {
                 {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
                 {products?.map(product => (
                     <div className="card" key={product.tuotenro}>
-                        <img src={require(".././images/tuotenro_" + product.tuotenro + ".jpg")} className="card-img-top" alt="" />
+                        <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} className="card-img-top" alt="" />
                         <div className="card-body">
                             <div>
                                 <h5 className="card-title">{product.tuotenimi}</h5>
