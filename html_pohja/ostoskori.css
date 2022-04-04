@@ -18,6 +18,10 @@ h1 {
     background-color: #d9c0c3;
 }
 
+h5 {
+    text-align: left;
+}
+
 .wrapper {
     min-height: 100vh;
     display: flex;
@@ -172,21 +176,44 @@ footer > div {
     border-radius: 20px;
     box-shadow: 0px 25px 40px rgb(245, 221, 221);
     margin: 0;
- padding: 0;
- height: 100vh;
- display: flex;
- justify-content: center;
- align-items: center;
- align-content: center;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+   }
+   
+
+.Box {
+     
+    position: relative;
+    margin-left: 4cm;
+    margin-top: 3cm;
+    margin-bottom: 5cm;
    }
 
-   .Box {
-     
-       position: relative;
-       margin-left: 5cm;
-       margin-top: 3cm;
-       margin-bottom: 5cm;
-   }
-  
+
+h5 {
+    position: absolute;
+    top: 8px;
+    right: 210px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 100%;
+    padding-top: 1cm;
+}
+
+h3 {
+    text-align: left;
+    padding-left: 1cm;
+    padding-top: 1cm;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 110%;
+
+
+}
+
+.Header {
+    width: 1000%;
+    background-size: 1600px;
+}
+
 
    
