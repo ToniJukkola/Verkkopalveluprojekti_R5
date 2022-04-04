@@ -28,14 +28,11 @@ export default function DeleteProduct({ url }) {
                 {products?.map(product => (
                     <div key={product.tuotenro}>
                         <form>
-                            <ul>{product.tuotenro}{". "}{product.tuotenimi}{" "}<input type={"checkbox"}></input></ul>
+                            <ul>{product.tuotenro}{". "}{product.tuotenimi}{" "}<button className="btn btn-outline-danger btn-sm">Poista <i className="bi bi-trash3"></i></button></ul>
                         </form>
                     </div>
                 ))}
             </div>
-            <ul>
-                <button type="button" className="btn btn-outline-dark">Poista tuote</button>
-            </ul>
         </main>
     );
 }
