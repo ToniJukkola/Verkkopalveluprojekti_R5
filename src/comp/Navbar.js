@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Cart from './Cart';
 
 export default function Navbar({ url, shopname }) {
   const [categories, setCategories] = useState([]);
@@ -58,7 +59,7 @@ export default function Navbar({ url, shopname }) {
           </form>
           <div className="navbar-icons">
             <Link className="bi bi-person-circle" to={"/admin/"}></Link>
-            <i className="bi bi-cart"></i>
+            <Cart />
           </div>
         </div>
       </div>

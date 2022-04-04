@@ -1,7 +1,8 @@
 export default function Cart({cart}) {
   return (
-    <Link to="/order">
-
-    </Link>
+    <>
+    <i className="bi bi-cart"></i>
+    <span class="cart-length">0</span>
+    </>
   )
 }
