@@ -8,6 +8,11 @@
     font-size: 1.5rem;
 }
 
+.product_pic{
+    max-width: 50px;
+    max-height: 50px;
+}
+
 .cart_button{
     padding: 10px 24px;  
 }
