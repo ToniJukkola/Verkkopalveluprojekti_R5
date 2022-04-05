@@ -29,7 +29,7 @@ function App() {
           </header>
 
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home url={BACKEND_URL} />} />
               <Route path="/ota-yhteytta" element={<Contact />} />
               <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} />} />
               <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} />} />
