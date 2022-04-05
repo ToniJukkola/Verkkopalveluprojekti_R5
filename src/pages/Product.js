@@ -18,12 +18,14 @@ export default function Product({ url }) {
 
   return (
     <>
-    <h3>{product.tuotenimi}</h3>
-    <h3>{product.tieteellinen_nimi}</h3>
-    {/* Kuva tähän jee */}
-    <h4>{product.hinta}</h4>
-    <p>{product.tuotekuvaus}</p>
-    <p>{product.ohje}</p>
+    <div>
+      <h3>{product.tuotenimi}</h3>
+      <h3>{product.tieteellinen_nimi}</h3>
+      <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
+      <h4>{product.hinta}</h4>
+      <p>{product.tuotekuvaus}</p>
+      <p>{product.ohje}</p>
+    </div>
     </>
   )
 }
