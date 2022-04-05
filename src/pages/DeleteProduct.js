@@ -16,23 +16,22 @@ export default function DeleteProduct({ url }) {
 
 
     return (
-        <main className="container">
-            <h1>Tuotteiden poistaminen</h1>
+    <main className="container">
+        <h1>Tuotteiden poistaminen</h1>
             <Link className="p-3" to={"/admin/"}>&larr; Takaisin ylläpidon etusivulle</Link>
-
-            <br /><br />
-            <form>
-                <ul><h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4></ul>
-            </form>
-            <div>
+            <br/><br/>
+       <div className="mt-5 col-lg-6 col-sm">  
+          <h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4>
+            <ul className="list-group">
                 {products?.map(product => (
                     <div key={product.tuotenro}>
                         <form>
-                            <ul>{product.tuotenro}{". "}{product.tuotenimi}{" "}<button className="btn btn-outline-danger btn-sm">Poista <i className="bi bi-trash3"></i></button></ul>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">{product.tuotenro}{". "}{product.tuotenimi} <button className="btn btn-outline-danger p-1 m-2" role="button">Poista <i className="bi bi-trash3"></i></button></li>
                         </form>
                     </div>
                 ))}
-            </div>
-        </main>
+            </ul>
+        </div>   
+    </main>
     );
 }
