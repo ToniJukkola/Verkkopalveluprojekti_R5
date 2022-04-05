@@ -19,6 +19,7 @@ export default function Product({ url }) {
 
   return (
     <>
+<<<<<<< HEAD
     <h3 className='product_name'>{product.tuotenimi}</h3>
     <p className='scientific_name'>{product.tieteellinen_nimi}</p>
     {/* <img src={require(".././images/tuotenro_" + product.tuotenro + ".jpg")}/> */}
@@ -37,6 +38,15 @@ export default function Product({ url }) {
     <div className='circle'>
     <p className='product_disc'>{product.tuotekuvaus}</p>
     <p className='product_care'>{product.ohje}</p>
+=======
+    <div>
+      <h3>{product.tuotenimi}</h3>
+      <h3>{product.tieteellinen_nimi}</h3>
+      <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
+      <h4>{product.hinta}</h4>
+      <p>{product.tuotekuvaus}</p>
+      <p>{product.ohje}</p>
+>>>>>>> 1ef37fd6ca4bbb669c1a5855d824abbdae4ece28
     </div>
     </>
   )

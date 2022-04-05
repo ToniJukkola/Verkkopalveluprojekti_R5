@@ -35,6 +35,10 @@ a:hover {
   color: var(--accent-color-darker);
 }
 
+.hidden {
+  display: none;
+}
+
 /* --- Buttons */
 
 .btn-accent {
@@ -78,6 +82,19 @@ a:hover {
   font-size: 1.6em;
   display: flex;
   gap: .75em;
+}
+
+.cart-length {
+  margin-left: -30px;
+  background: var(--accent-color-darker);
+  color: #fff;
+  font-size: .4em;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width:992px) {
