@@ -19,13 +19,11 @@ export default function Product({ url }) {
 
   return (
     <>
-    <h3 className='product_name'>{product.tuotenimi}</h3>
-    <p className='scientific_name'>{product.tieteellinen_nimi}</p>
-    <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
-    <h4>{product.hinta}</h4>
-    <div>
+    <div className='grid_container'>
+      <div>
+      <h4>{product.hinta}</h4>
       <button type="button" className='cart_button'>Lisää ostoskoriin</button>
-      <label for="amount">KPL</label>
+      <label for="amount" className='amount'>KPL</label>
       <select name="amount" id="amount">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -33,10 +31,17 @@ export default function Product({ url }) {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+    <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
     </div>
+    <div>
+    <h3 className='product_name'>{product.tuotenimi}</h3>
+    <p className='scientific_name'>{product.tieteellinen_nimi}</p>
+    <h4>{product.hinta}</h4>
     <div className='circle'>
     <p className='product_disc'>{product.tuotekuvaus}</p>
     <p className='product_care'>{product.ohje}</p>
+    </div>
+    </div>
     </div>
     </>
   )
