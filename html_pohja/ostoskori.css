@@ -173,7 +173,6 @@ footer > div {
     width: 90%;
     height: 85%;
     background-color: #fff;
-    border-radius: 20px;
     box-shadow: 0px 25px 40px rgb(245, 221, 221);
     margin: 0;
     padding: 0;
@@ -187,7 +186,7 @@ footer > div {
     position: relative;
     margin-left: 4cm;
     margin-top: 3cm;
-    margin-bottom: 5cm;
+    margin-bottom: 3cm;
    }
 
 
@@ -214,6 +213,16 @@ h3 {
     width: 1000%;
     background-size: 1600px;
 }
+
+hr {
+    border: 1px solid #202020;
+    padding-left: 40.5cm;
+    position: absolute;
+    margin: 15px;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+  }
+
 
 
    
