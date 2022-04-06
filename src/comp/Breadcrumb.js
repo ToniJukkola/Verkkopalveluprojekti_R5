@@ -29,9 +29,16 @@ export default function Breadcrumb({url}) {
   // Tämä tarkistaa pitääkö polun näyttönimi hakea muualta vai riittääkö sen oma nimi
   function typeCheck(item,index,pname) {
     if(item === "tuotteet") {
-      return categories[(newOrderPathnames[index][1])-1]?.trnimi;
+      const nIndex = categories.findIndex(e => {
+        return e.trnro == pname[1];
+      })
+      return categories[nIndex]?.trnimi;
     } else if (item === "tuote") {
-      return products[(newOrderPathnames[index][1])-1]?.tuotenimi;
+      const nIndex = products.findIndex(e => {
+        return e.tuotenro == pname[1];
+      })
+      
+      return products[nIndex]?.tuotenimi;
     } else {
       return pname;
     }
