@@ -216,8 +216,13 @@ h3 {
 
 hr {
     border: 1px solid #202020;
-    padding-left: 41cm;
+    padding-left: 40.5cm;
     position: absolute;
+    margin: 15px;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
   }
+
+
 
    
