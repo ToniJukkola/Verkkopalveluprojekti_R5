@@ -59,7 +59,7 @@ export default function Navbar({ url, shopname, cart }) {
           </form>
           <div className="navbar-icons">
             <Link className="bi bi-person-circle" to={"/admin/"}></Link>
-            <Cart cart={cart} />
+            <Link to={"/ostoskori"}><Cart cart={cart} /></Link>
           </div>
         </div>
       </div>

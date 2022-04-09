@@ -80,8 +80,16 @@ a:hover {
   gap: .75em;
 }
 
+.cart-icon-container {
+  display: flex;
+}
+
+.navbar-icons a {
+  text-decoration: none;
+}
+
 .cart-length {
-  margin-left: -30px;
+  margin-left: -10px;
   background: var(--accent-color-darker);
   color: #fff;
   font-size: .4em;

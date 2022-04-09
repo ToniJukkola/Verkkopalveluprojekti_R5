@@ -8,10 +8,10 @@ export default function Cart({cart}) {
   } 
 
   return (
-    <>
+    <div className="cart-icon-container">
     <i className="bi bi-cart"></i>
     <span className="cart-length hidden" id="cart-bubble">{cart.length}</span>
-    </>
+    </div>
   )
 }
 

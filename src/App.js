@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
+import Order from './pages/Order';
 import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
@@ -51,6 +52,9 @@ function App() {
             <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
+            <Route path="/ostoskori" element={<Order cart={cart} />} />
+
+            {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
             <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
