@@ -35,6 +35,12 @@ function App() {
     setCart(newCart);
     localStorage.setItem("cart", JSON.stringify(newCart));
   }
+
+  function removeFromCart(product) {
+    const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem("cart", JSON.stringify(itemsWithoutRemoved));
+  }
   // --- Ostoskorihommat päättyy
 
   return (
@@ -52,7 +58,7 @@ function App() {
             <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/ostoskori" element={<Order cart={cart} />} />
+            <Route path="/ostoskori" element={<Order cart={cart} removeFromCart={removeFromCart} />} />
 
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />

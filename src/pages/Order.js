@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 
-export default function Order({ cart }) {
+export default function Order({ cart, removeFromCart }) {
   let sum = 0;
 
   return (
@@ -15,6 +15,7 @@ export default function Order({ cart }) {
               <tr key={uuid()}>
                 <td>{product.tuotenimi}</td>
                 <td>{product.hinta}</td>
+                <td><button className="btn btn-dark" role="button" onClick={() => removeFromCart(product)}>Poista</button></td>
               </tr>
             )
           })}
