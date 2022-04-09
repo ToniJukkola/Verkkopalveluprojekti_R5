@@ -35,10 +35,6 @@ a:hover {
   color: var(--accent-color-darker);
 }
 
-.hidden {
-  display: none;
-}
-
 /* --- Buttons */
 
 .btn-accent {
@@ -211,4 +207,10 @@ footer>div {
   margin-top: 1em;
   margin-bottom: 1em;
   display: block;
+}
+
+/* UTILITIES */
+
+.hidden {
+  display: none;
 }

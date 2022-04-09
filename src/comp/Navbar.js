@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Cart from './Cart';
 
-export default function Navbar({ url, shopname }) {
+export default function Navbar({ url, shopname, cart }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Navbar({ url, shopname }) {
           </form>
           <div className="navbar-icons">
             <Link className="bi bi-person-circle" to={"/admin/"}></Link>
-            <Cart />
+            <Cart cart={cart} />
           </div>
         </div>
       </div>

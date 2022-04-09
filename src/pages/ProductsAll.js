@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ProductsAll({ url }) {
+export default function ProductsAll({ url, addToCart }) {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         axios.get(url + "products/get_products-all.php")
@@ -31,7 +31,7 @@ export default function ProductsAll({ url }) {
                                 <Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>Lue lisää</Link>
                             </p>
 
-                            <a href="#" className="btn btn-accent"><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</a>
+                            <button className="btn btn-accent" role="button" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
                         </div>
                     </div>
                 ))}
