@@ -11,10 +11,10 @@ import Contact from "./pages/Contact";
 import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
-import Admin from "./pages/Admin";
-import AddProduct from "./pages/AddProduct";
-import AddCategory from "./pages/AddCategory";
-import DeleteProduct from "./pages/DeleteProduct";
+import Admin from "./admin/Admin";
+import AddProduct from "./admin/AddProduct";
+import AddCategory from "./admin/AddCategory";
+import DeleteProduct from "./admin/DeleteProduct";
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
