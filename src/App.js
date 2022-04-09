@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 // Import components
@@ -22,6 +22,12 @@ const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 function App() {
   // --- Ostoskorihommat alkaa
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    if ("cart" in localStorage) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, [])
 
   function addToCart(product) {
     const newCart = [...cart, product];
