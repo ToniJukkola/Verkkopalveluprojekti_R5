@@ -44,7 +44,7 @@ function App() {
             <Route path="/ota-yhteytta" element={<Contact />} />
             <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} />} />
+            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
             <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
