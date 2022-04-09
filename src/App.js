@@ -81,7 +81,7 @@ function App() {
             <Route path="/Admin/DeleteProduct" element={<DeleteProduct url={BACKEND_URL} />} />
           </Routes>
 
-          <Footer shopname={SHOP_NAME} />
+          <Footer shopname={SHOP_NAME} url={BACKEND_URL} />
         </Router>
       </div>
     </>

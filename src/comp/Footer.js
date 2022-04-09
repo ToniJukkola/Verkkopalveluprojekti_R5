@@ -1,6 +1,20 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
-export default function Footer({shopname}) {
+export default function Footer({ url, shopname }) {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios.get(url + "products/get_categories.php")
+            .then((response) => {
+                const json = response.data;
+                setCategories(json);
+            }).catch(error => {
+                alert(error.response === undefined ? error : error.response.data.error);
+            })
+    }, [])
+
     return (
         <footer className="container-fluid">
             <div>
@@ -11,10 +25,12 @@ export default function Footer({shopname}) {
             <div>
                 <div className="footer-title">Sivukartta</div>
                 <ul className="list-unstyled">
-                    <a href="../tuotteet/1"><li>Viherkasvit</li></a>
-                    <a href="../tuotteet/2"><li>Mehikasvit</li></a>
-                    <a href="../tuotteet/3"><li>Kaktukset</li></a>
-                    <a href="../tuotteet/4"><li>Tarvikkeet</li></a>
+                    {categories.map(category => (
+                        <li key={category.trnro}>
+                            {<Link to={"/tuotteet/" + category.trnro}>{category.trnimi}
+                            </Link>}
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div>
