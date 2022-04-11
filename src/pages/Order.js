@@ -35,8 +35,8 @@ export default function Order({ cart, removeFromCart, updateAmount }) {
               <tr key={uuid()}>
                 <td>{product.tuotenimi}</td>
                 <td>{product.hinta} €</td>
-                <td><input style={{ width: 100 + "px", padding: 5 + "px" }} ref={inputs[index]} type="number" min="0" value={product.amount} onChange={e => changeAmount(e, product)} ></input></td>
-                <td><button className="btn btn-dark" role="button" onClick={() => removeFromCart(product)}>Poista</button></td>
+                <td><input style={{ width: 100 + "px", padding: 5 + "px" }} ref={inputs[index]} type="number" min="1" value={product.amount} onChange={e => changeAmount(e, product)} ></input></td>
+                <td><button className="btn btn-dark" onClick={() => removeFromCart(product)}>Poista</button></td>
               </tr>
             )
           })}
