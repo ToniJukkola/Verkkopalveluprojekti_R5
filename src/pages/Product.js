@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './Product.css'
 
-export default function Product({ url }) {
+export default function Product({ url, addToCart }) {
   const [product, setProduct] = useState([]);
 
   let params = useParams();
@@ -21,8 +21,8 @@ export default function Product({ url }) {
     <>
     <div className='grid_container'>
       <h4>{product.hinta}</h4>
-      <button type="button" className='cart_button'>Lisää ostoskoriin</button>
-      <label for="amount" className='amount'>KPL</label>
+      <button className="btn btn-accent" role="button" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
+      <label htmlFor="amount" className='amount'>KPL</label>
       <select name="amount" id="amount">
         <option value="1">1</option>
         <option value="2">2</option>
