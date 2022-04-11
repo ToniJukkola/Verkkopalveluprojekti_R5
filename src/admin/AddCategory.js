@@ -66,7 +66,7 @@ export default function AddCategory({ url }) {
         <h4>Poista tuoteryhmä</h4>
         <ul className="list-group">
           {categories?.map(category => (
-            <li className="list-group-item d-flex justify-content-between align-items-center" key={category.trnro}>{category.trnimi} <button className="btn btn-dark p-1 m-2" role="button" onClick={() => deleteCategory(category.trnro)}>Poista</button></li>
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={category.trnro}>{category.trnimi} <button className="btn btn-dark p-1 m-2" onClick={() => deleteCategory(category.trnro)}>Poista</button></li>
           ))}
         </ul>
       </div>

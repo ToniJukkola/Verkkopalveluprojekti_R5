@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 export default function Cart({cart}) {
   const CART_BUBBLE = document.getElementById("cart-bubble");

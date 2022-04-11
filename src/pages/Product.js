@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './Product.css'
 
 export default function Product({ url, addToCart }) {
@@ -22,7 +22,7 @@ export default function Product({ url, addToCart }) {
     <div className='grid_container'>
       <div>
       <h4>{product.hinta}</h4>
-      <button className="btn btn-accent" role="button" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
+      <button className="btn btn-accent" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
       <label htmlFor="amount" className='amount'>KPL</label>
       <select name="amount" id="amount">
         <option value="1">1</option>

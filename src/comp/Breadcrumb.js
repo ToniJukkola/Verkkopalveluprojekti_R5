@@ -30,12 +30,12 @@ export default function Breadcrumb({url}) {
   function typeCheck(item,index,pname) {
     if(item === "tuotteet") {
       const nIndex = categories.findIndex(e => {
-        return e.trnro == pname[1];
+        return e.trnro === pname[1];
       })
       return categories[nIndex]?.trnimi;
     } else if (item === "tuote") {
       const nIndex = products.findIndex(e => {
-        return e.tuotenro == pname[1];
+        return e.tuotenro === pname[1];
       })
       
       return products[nIndex]?.tuotenimi;

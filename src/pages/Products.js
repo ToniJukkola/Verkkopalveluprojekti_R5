@@ -37,7 +37,7 @@ export default function Products({ url, addToCart }) {
                 <Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>Lue lisää</Link>
               </p>
 
-              <button className="btn btn-accent" role="button" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
+              <button className="btn btn-accent" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
             </div>
           </div>
         ))}
