@@ -31,6 +31,34 @@ export default function AddProduct({ url }) {
         'Content-Type': 'application/json'
         }
     })
+        .then((response) => {
+            setName(name => [...name, response.data]);
+            setName('');
+                setDesc(desc => [...desc, response.data]);
+                setDesc('');
+                    setInstruction(instruction => [...instruction, response.data]);
+                    setInstruction('');
+                        setOthername(othername => [...othername, response.data]);
+                        setOthername('');
+                            setPrice(price => [...price, response.data]);
+                            setPrice('');
+                                selectCategory(category => [...category, response.data]);
+                                selectCategory('');
+                axios.get(url + "products/get_products.php")
+                .then((response) => {
+                    setName(response.data);
+                    setDesc(response.data);
+                    setInstruction(response.data);
+                    setOthername(response.data);
+                    setInstruction(response.data);
+                    setPrice(response.data);
+                    selectCategory(response.data);
+                }).catch(error => {
+                    alert(error.response === undefined ? error : error.response.data.error);
+                })
+        }).catch(error => {
+            alert(error.response ? error.response.data.error : error);
+        })
         
 
         e.preventDefault();
