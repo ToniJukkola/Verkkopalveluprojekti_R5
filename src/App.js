@@ -16,6 +16,7 @@ import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
 import DeleteProduct from "./admin/DeleteProduct";
+import Search from './pages/Search';
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
@@ -73,7 +74,8 @@ function App() {
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/ostoskori" element={<Order cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} />} />
-
+            <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} />} />
+            
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />

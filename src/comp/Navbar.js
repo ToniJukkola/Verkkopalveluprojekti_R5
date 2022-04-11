@@ -1,11 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Search from '../pages/Search';
 import Cart from './Cart';
 
 export default function Navbar({ url, shopname, cart }) {
   const [categories, setCategories] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     axios.get(url + "products/get_categories.php")
       .then((response) => {
@@ -14,7 +15,7 @@ export default function Navbar({ url, shopname, cart }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [])
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -54,8 +55,8 @@ export default function Navbar({ url, shopname, cart }) {
           </ul>
           <form className="d-flex">
             <input className="form-control me-2" type="search" placeholder="Kirjoita hakusana"
-              aria-label="Search" />
-            <button className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></button>
+              aria-label="Search" onChange={e => setSearchTerm(e.target.value)} />
+            <Link to={"/haku/" + searchTerm} className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></Link>
           </form>
           <div className="navbar-icons">
             <Link className="bi bi-person-circle" to={"/admin/"}></Link>
