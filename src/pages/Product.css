@@ -1,6 +1,6 @@
 .grid_container{
     display: grid;
-  grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .product_name{
@@ -19,7 +19,7 @@
 }
 
 .cart_button{
-    padding: 10px 24px;  
+    padding: 10px 10px;  
 }
 
 #amount, .amount{
