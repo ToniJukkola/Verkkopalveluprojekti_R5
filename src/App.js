@@ -74,7 +74,7 @@ function App() {
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/ostoskori" element={<Order cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} />} />
-            <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} />} />
+            <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
             
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
