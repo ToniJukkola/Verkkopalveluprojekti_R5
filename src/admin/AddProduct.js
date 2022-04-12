@@ -25,7 +25,14 @@ export default function AddProduct({ url }) {
 
     function addNewProduct(e) {
         e.preventDefault();
-        const json = JSON.stringify({ tuotenimi: name },{ tuotekuvaus: desc },{ ohje: instruction },{ tieteellinen_nimi: othername },{ hinta: price },{ trnimi: category });
+        const json = JSON.stringify({ 
+            tuotenimi: name,
+            tuotekuvaus: desc,
+            ohje: instruction, 
+            tieteellinen_nimi: othername,
+            hinta: price,
+            trnimi: category
+         });
         axios.post(url + 'admin/add_product.php', json, {
         headers: {
         'Content-Type': 'application/json'
@@ -34,16 +41,16 @@ export default function AddProduct({ url }) {
         .then((response) => {
             setName(name => [...name, response.data]);
             setName('');
-                setDesc(desc => [...desc, response.data]);
-                setDesc('');
-                    setInstruction(instruction => [...instruction, response.data]);
-                    setInstruction('');
-                        setOthername(othername => [...othername, response.data]);
-                        setOthername('');
-                            setPrice(price => [...price, response.data]);
-                            setPrice('');
-                                selectCategory(category => [...category, response.data]);
-                                selectCategory('');
+             setDesc(desc => [...desc, response.data]);
+             setDesc('');
+             setInstruction(instruction => [...instruction, response.data]);
+             setInstruction('');
+             setOthername(othername => [...othername, response.data]);
+             setOthername('');
+             setPrice(price => [...price, response.data]);
+             setPrice('');   
+             selectCategory(category => [...category, response.data]);
+             selectCategory('');
                 axios.get(url + "products/get_products.php")
                 .then((response) => {
                     setName(response.data);
