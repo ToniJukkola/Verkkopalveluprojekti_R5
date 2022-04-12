@@ -10,7 +10,7 @@ export default function AddProduct({ url }) {
     const [instruction, setInstruction] = useState([]);
     const [othername, setOthername] = useState([]);
     const [price, setPrice] = useState([]);
-    const [category, selectCategory] = useState([]);
+    const [category, selectCategory] = useState(1);
     const [categories, setCategories] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
     const [products, setProduct] = useState([]);
@@ -41,27 +41,15 @@ export default function AddProduct({ url }) {
         }
     })
         .then((response) => {
-            setName(name => [...name, response.data]);
             setName('');
-             setDesc(desc => [...desc, response.data]);
              setDesc('');
-             setInstruction(instruction => [...instruction, response.data]);
              setInstruction('');
-             setOthername(othername => [...othername, response.data]);
              setOthername('');
-             setPrice(price => [...price, response.data]);
-             setPrice('');   
-             selectCategory(category => [...category, response.data]);
+             setPrice('');  
              selectCategory('');
                 axios.get(url + "products/get_products.php")
                 .then((response) => {
-                    setName(response.data);
-                    setDesc(response.data);
-                    setInstruction(response.data);
-                    setOthername(response.data);
-                    setInstruction(response.data);
-                    setPrice(response.data);
-                    selectCategory(response.data);
+                    setProduct(response.data)
                 }).catch(error => {
                     alert(error.response === undefined ? error : error.response.data.error);
                 })
@@ -123,7 +111,8 @@ export default function AddProduct({ url }) {
                         <button type="submit" className="btn btn-outline-dark">Lisää uusi tuote</button>
                     </ul>
                 </div>
-                <div className="mt-5 col-lg-6 col-sm"> 
+            </form> 
+            <div className="mt-5 col-lg-6 col-sm"> 
           <h4>Tuotteet</h4>
             <ul className="list-group">
                 {products?.map(product => (
@@ -135,7 +124,6 @@ export default function AddProduct({ url }) {
                 ))}
             </ul>
         </div>
-           </form> 
         </main>
     );
 }
