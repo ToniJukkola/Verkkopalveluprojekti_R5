@@ -112,7 +112,7 @@ export default function AddProduct({ url }) {
                     <ul>
                         <select className='form-control' value={category} onChange={e => selectCategory(e.target.value)}>
                             {categories?.map(category => (
-                                <option key={category.trnro}>{category.trnimi}{category.trnro}
+                                <option key={category.trnro}value={category.trnro}>{category.trnimi}
                                 </option>))};
                         </select>
                     </ul>
@@ -123,7 +123,7 @@ export default function AddProduct({ url }) {
                         <button type="submit" className="btn btn-outline-dark">Lisää uusi tuote</button>
                     </ul>
                 </div>
-                <div className="mt-5 col-lg-6 col-sm">  
+                <div className="mt-5 col-lg-6 col-sm"> 
           <h4>Tuotteet</h4>
             <ul className="list-group">
                 {products?.map(product => (
