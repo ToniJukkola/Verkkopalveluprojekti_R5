@@ -12,7 +12,7 @@ export default function GetProduct({ url }) {
             }).catch(error => {
                 alert(error.response === undefined ? error : error.response.data.error);
             })
-    }, [])
+    }, [url])
 
     function DeleteProduct(tuotenro) {
         const json = JSON.stringify({ tuotenro: tuotenro });

@@ -13,6 +13,7 @@ export default function AddProduct({ url }) {
     const [category, selectCategory] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [products, setProduct] = useState([]);
 
     useEffect(() => {
         axios.get(url + "products/get_categories.php")
@@ -21,7 +22,7 @@ export default function AddProduct({ url }) {
             }).catch(error => {
                 alert(error.response === undefined ? error : error.response.data.error);
             })
-    }, []);
+    }, [url]);
 
     function addNewProduct(e) {
         e.preventDefault();
@@ -31,8 +32,9 @@ export default function AddProduct({ url }) {
             ohje: instruction, 
             tieteellinen_nimi: othername,
             hinta: price,
-            trnimi: category
+            trnro: category
          });
+         console.log(json);
         axios.post(url + 'admin/add_product.php', json, {
         headers: {
         'Content-Type': 'application/json'
@@ -68,15 +70,13 @@ export default function AddProduct({ url }) {
         })
         
 
-        e.preventDefault();
+       
         // Tää koodi tulee sit Tonin tuotekoodin .then sisälle
         let data = new FormData();
         data.append('file', selectedFile[0]);
-        console.log(data);
-        
         axios.post(url + "admin/save_img.php", data)
         .then((response) => {
-            console.log(response);
+          
         }).catch(error => {
             alert(error.response ? error.response.data.error : error);
         });
@@ -112,7 +112,7 @@ export default function AddProduct({ url }) {
                     <ul>
                         <select className='form-control' value={category} onChange={e => selectCategory(e.target.value)}>
                             {categories?.map(category => (
-                                <option key={category.trnro}>{category.trnimi}
+                                <option key={category.trnro}>{category.trnimi}{category.trnro}
                                 </option>))};
                         </select>
                     </ul>
@@ -123,6 +123,18 @@ export default function AddProduct({ url }) {
                         <button type="submit" className="btn btn-outline-dark">Lisää uusi tuote</button>
                     </ul>
                 </div>
+                <div className="mt-5 col-lg-6 col-sm">  
+          <h4>Tuotteet</h4>
+            <ul className="list-group">
+                {products?.map(product => (
+                    <div key={product.tuotenro}>
+                        <form>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">{product.tuotenro}{". "}{product.tuotenimi}</li>
+                        </form>
+                    </div>
+                ))}
+            </ul>
+        </div>
            </form> 
         </main>
     );
