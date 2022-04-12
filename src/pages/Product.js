@@ -20,7 +20,14 @@ export default function Product({ url, addToCart }) {
   return (
     <>
     <div className='grid_container'>
-      <h4>{product.hinta}</h4>
+      <div>
+    <h3 className='product_name'>{product.tuotenimi}</h3>
+    <h4 className='price'>{product.hinta}</h4>
+  
+    <p className='scientific_name'>{product.tieteellinen_nimi}</p>
+    <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
+  </div>
+  <div>
       <button className="btn btn-accent" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
       <label htmlFor="amount" className='amount'>KPL</label>
       <select name="amount" id="amount">
@@ -30,13 +37,11 @@ export default function Product({ url, addToCart }) {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-    <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
-    <h3 className='product_name'>{product.tuotenimi}</h3>
-    <p className='scientific_name'>{product.tieteellinen_nimi}</p>
-    <h4>{product.hinta}</h4>
+      
     <div className='circle'>
     <p className='product_disc'>{product.tuotekuvaus}</p>
     <p className='product_care'>{product.ohje}</p>
+    </div>
     </div>
     </div>
     </>
