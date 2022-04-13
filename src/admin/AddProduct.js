@@ -10,10 +10,10 @@ export default function AddProduct({ url }) {
     const [instruction, setInstruction] = useState([]);
     const [othername, setOthername] = useState([]);
     const [price, setPrice] = useState([]);
-    const [category, selectCategory] = useState(1);
+    const [category, setCategory] = useState(1);
     const [categories, setCategories] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
-    const [products, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         axios.get(url + "products/get_categories.php")
@@ -41,18 +41,19 @@ export default function AddProduct({ url }) {
         }
     })
         .then((response) => {
+            console.log(response);
             setName('');
              setDesc('');
              setInstruction('');
              setOthername('');
              setPrice('');  
-             selectCategory('');
-                axios.get(url + "products/get_products.php")
-                .then((response) => {
-                    setProduct(response.data)
-                }).catch(error => {
-                    alert(error.response === undefined ? error : error.response.data.error);
-                })
+             setCategory(1);
+             axios.get(url + "products/get_products-all.php")
+            .then((response) => {
+                setProducts(response.data);
+            }).catch(error => {
+                alert(error.response === undefined ? error : error.response.data.error);
+            })
         }).catch(error => {
             alert(error.response ? error.response.data.error : error);
         })
@@ -98,7 +99,7 @@ export default function AddProduct({ url }) {
                         <input className="form-control" type="number" step="0.01" placeholder="Hinta" value={price} onChange={e => setPrice(e.target.value)}></input>
                     </ul>
                     <ul>
-                        <select className='form-control' value={category} onChange={e => selectCategory(e.target.value)}>
+                        <select className='form-control' value={category} onChange={e => setCategory(e.target.value)}>
                             {categories?.map(category => (
                                 <option key={category.trnro}value={category.trnro}>{category.trnimi}
                                 </option>))};
