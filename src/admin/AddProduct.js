@@ -15,6 +15,8 @@ export default function AddProduct({ url }) {
     const [selectedFile, setSelectedFile] = useState(null);
     const [products, setProducts] = useState([]);
 
+        axios.defaults.withCredentials=true;
+        
     useEffect(() => {
         axios.get(url + "products/get_categories.php")
             .then((response) => {
