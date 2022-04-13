@@ -26,49 +26,55 @@ export default function AddProduct({ url }) {
 
     function addNewProduct(e) {
         e.preventDefault();
-        const json = JSON.stringify({ 
-            tuotenimi: name,
-            tuotekuvaus: desc,
-            ohje: instruction, 
-            tieteellinen_nimi: othername,
-            hinta: price,
-            trnro: category
-         });
-         console.log(json);
-        axios.post(url + 'admin/add_product.php', json, {
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    })
-        .then((response) => {
-            console.log(response);
-            setName('');
-             setDesc('');
-             setInstruction('');
-             setOthername('');
-             setPrice('');  
-             setCategory(1);
-             axios.get(url + "products/get_products-all.php")
-            .then((response) => {
-                setProducts(response.data);
-            }).catch(error => {
-                alert(error.response === undefined ? error : error.response.data.error);
+        if(name !== "" && selectedFile !== null) {
+            const json = JSON.stringify({ 
+                tuotenimi: name,
+                tuotekuvaus: desc,
+                ohje: instruction, 
+                tieteellinen_nimi: othername,
+                hinta: price,
+                trnro: category
+            });
+            console.log(json);
+            
+            axios.post(url + 'admin/add_product.php', json, {
+            headers: {
+            'Content-Type': 'application/json'
+            }
             })
-        }).catch(error => {
-            alert(error.response ? error.response.data.error : error);
-        })
+            .then((response) => {
+                console.log(response.data);
+                // Lisätään kuva backendiin, kun tiedot on lisätty
+                let data = new FormData();
+                data.append('file', selectedFile[0]);
+                data.append("tuotenro", response.data.tuotenro)
+                console.log(data);
+                axios.post(url + "admin/save_img.php", data)
+                .then((response) => {
+                    console.log(response.data);
+                }).catch(error => {
+                    alert(error.response ? error.response.data.error : error);
+                });
+                setName('');
+                setDesc('');
+                setInstruction('');
+                setOthername('');
+                setPrice('');  
+                setCategory(1);
+                axios.get(url + "products/get_products-all.php")
+                .then((response) => {
+                    setProducts(response.data);
+                }).catch(error => {
+                    alert(error.response === undefined ? error : error.response.data.error);
+                })
+            }).catch(error => {
+                alert(error.response ? error.response.data.error : error);
+            })
         
 
        
-        // Tää koodi tulee sit Tonin tuotekoodin .then sisälle
-        let data = new FormData();
-        data.append('file', selectedFile[0]);
-        axios.post(url + "admin/save_img.php", data)
-        .then((response) => {
-          
-        }).catch(error => {
-            alert(error.response ? error.response.data.error : error);
-        });
+
+    }
     }
 
     const handleFileSelect = (event) => {
