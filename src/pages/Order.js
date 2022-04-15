@@ -103,7 +103,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
           <label htmlFor="city" className="form-label">Postitoimipaikka</label>
           <input type="text" name="city" className="form-control" onChange={e => setCity(e.target.value)} />
         </div>
-        <button type="submit" className="btn btn-accent">Lähetä tilaus</button>
+        <button type="submit" className="btn btn-dark">Lähetä tilaus</button>
       </form>
 
     </main>
