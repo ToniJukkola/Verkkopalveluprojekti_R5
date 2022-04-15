@@ -56,6 +56,10 @@ function App() {
     setCart(modifiedCart);
     localStorage.setItem("cart", JSON.stringify(modifiedCart));
   }
+
+  function emptyCart() {
+    setCart([]);
+  }
   // --- Ostoskorihommat päättyy
 
   return (
@@ -73,7 +77,7 @@ function App() {
             <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/ostoskori" element={<Order cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} />} />
+            <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
             
             {/* ----- ADMIN */}
