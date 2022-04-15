@@ -3,7 +3,7 @@ import React, { createRef, useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 
 export default function Order({ url, cart, removeFromCart, updateAmount, emptyCart }) {
-  const [inputs, _] = useState([]);
+  const [inputs] = useState([]);
   const [inputIndex, setInputIndex] = useState(-1);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -18,13 +18,13 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
     for (let i = 0; i < cart.length; i++) {
       inputs[i] = createRef();
     }
-  }, [cart.length])
+  }, [cart.length, inputs])
 
   useEffect(() => {
     if (inputs.length > 0 && inputIndex > -1 && inputs[inputIndex].current !== null) {
       inputs[inputIndex].current.focus();
     }
-  }, [cart])
+  }, [cart, inputIndex, inputs])
 
   function changeAmount(e, product, index) {
     updateAmount(e.target.value, product);
@@ -80,6 +80,8 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
           </tr>
         </tbody>
       </table>
+
+      <button className="mt-4 btn btn-outline-dark" onClick={emptyCart}>Tyhjennä ostoskori</button>
 
       <form className="mt-5" onSubmit={sendOrder}>
         <h3>Toimitustiedot</h3>

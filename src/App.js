@@ -59,6 +59,7 @@ function App() {
 
   function emptyCart() {
     setCart([]);
+    localStorage.removeItem("cart");
   }
   // --- Ostoskorihommat päättyy
 
