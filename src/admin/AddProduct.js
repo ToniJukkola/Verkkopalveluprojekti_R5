@@ -37,7 +37,6 @@ export default function AddProduct({ url }) {
                 hinta: price,
                 trnro: category
             });
-            console.log(json);
             
             axios.post(url + 'admin/add_product.php', json, {
             headers: {
@@ -45,15 +44,12 @@ export default function AddProduct({ url }) {
             }
             })
             .then((response) => {
-                console.log(response.data);
                 // Lisätään kuva backendiin, kun tiedot on lisätty
                 let data = new FormData();
                 data.append('file', selectedFile[0]);
                 data.append("tuotenro", response.data.tuotenro)
-                console.log(data);
                 axios.post(url + "admin/save_img.php", data)
                 .then((response) => {
-                    console.log(response.data);
                 }).catch(error => {
                     alert(error.response ? error.response.data.error : error);
                 });
@@ -81,7 +77,6 @@ export default function AddProduct({ url }) {
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files);
-        console.log(event.target.files);
     }
 
     return (
