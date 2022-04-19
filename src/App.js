@@ -83,7 +83,7 @@ function App() {
         <Router>
           <header>
             <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} />
-            <Breadcrumb url={BACKEND_URL} />
+            <Breadcrumb url={BACKEND_URL} categories={categories} />
           </header>
 
           <Routes>
