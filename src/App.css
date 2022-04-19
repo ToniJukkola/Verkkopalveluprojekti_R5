@@ -13,11 +13,18 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
 }
 
-h1 {
-  background-color: var(--accent-color-lighter);
+h1, h2 {
   font-family: var(--navbar-font-family);
   padding: .2em .5em;
   border-radius: 15px;
+}
+
+h1 {
+  background-color: var(--accent-color-lighter);
+}
+
+h2 {
+  background-color: var(--gray-bg-color-lighter);
 }
 
 .wrapper {
