@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 // Import components
 import Footer from "./comp/Footer";
 import Navbar from "./comp/Navbar";
@@ -12,17 +13,29 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Order from './pages/Order';
+import Search from './pages/Search';
+import OrderSummary from './pages/OrderSummary';
 import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
 import DeleteProduct from "./admin/DeleteProduct";
-import Search from './pages/Search';
-import OrderSummary from './pages/OrderSummary';
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
 function App() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios.get(BACKEND_URL + "products/get_categories.php")
+      .then((response) => {
+        const json = response.data;
+        setCategories(json);
+      }).catch(error => {
+        alert(error.response === undefined ? error : error.response.data.error);
+      })
+  }, []);
+
   // --- Ostoskorihommat alkaa
   const [cart, setCart] = useState([]);
 
@@ -69,7 +82,7 @@ function App() {
       <div className="wrapper">
         <Router>
           <header>
-            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} />
+            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} />
             <Breadcrumb url={BACKEND_URL} />
           </header>
 
@@ -86,11 +99,11 @@ function App() {
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
-            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
+            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} categories={categories} setCategories={setCategories} />} />
             <Route path="/Admin/DeleteProduct" element={<DeleteProduct url={BACKEND_URL} />} />
           </Routes>
 
-          <Footer shopname={SHOP_NAME} url={BACKEND_URL} />
+          <Footer shopname={SHOP_NAME} categories={categories} />
         </Router>
       </div>
     </>

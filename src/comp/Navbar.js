@@ -1,23 +1,11 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from './Cart';
 
-export default function Navbar({ url, shopname, cart }) {
-  const [categories, setCategories] = useState([]);
+export default function Navbar({ shopname, cart, categories }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get(url + "products/get_categories.php")
-      .then((response) => {
-        const json = response.data;
-        setCategories(json);
-      }).catch(error => {
-        alert(error.response === undefined ? error : error.response.data.error);
-      })
-  }, [url]);
 
   function search(e) {
     e.preventDefault();
@@ -42,7 +30,7 @@ export default function Navbar({ url, shopname, cart }) {
               <Link className="nav-link" to="/ota-yhteytta">Ota yhteyttä</Link>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Tuotteet
               </a>
