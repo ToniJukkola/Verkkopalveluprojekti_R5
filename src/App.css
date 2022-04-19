@@ -229,6 +229,8 @@ footer>div {
 .grid_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .product_name {
@@ -248,8 +250,8 @@ footer>div {
 
 #amount, .amount {
   padding: 7px;
-  border-radius: 50%;
-  font-weight: bold;
+  border-radius: 10%;
+  font-weight: 600;
   margin-top: 3.5rem;
   margin-bottom: 1rem;
 }
@@ -257,21 +259,15 @@ footer>div {
 .circle {
   background: var(--gray-bg-color);
   border-radius: 50%;
-  width: 35rem;
-  height: 30rem;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  display: grid;
   align-items: center;
-  text-align: center;
-
+  text-align: left;
+  padding: 3em;
 }
 
-.product_disc {
-  margin-left: 0.2rem;
-}
-
-.product_disc, .product_care {
-  font-size: 1rem;
+.circle > div {
+  margin: 3em;
 }
 
 /* UTILITIES */
