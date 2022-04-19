@@ -139,7 +139,7 @@ footer > div {
     justify-content: center;
 }
 
-/* --- Cards */
+/* --- Cards
 
 .card {
     border-radius: 15px;
@@ -167,6 +167,7 @@ footer > div {
     display: block;
 }
 
+ */
 
 /* Cart */
 .Cart-Container{
@@ -188,6 +189,11 @@ footer > div {
     margin-top: 3cm;
     margin-bottom: 3cm;
    }
+
+
+h2, p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 
 h5 {
@@ -229,7 +235,7 @@ hr {
   .leftcolumn {
     float: left;
     width: 50%;
-    padding-left: 40px;
+    padding-left: 50px;
   }
  
   .fakeimg {
@@ -239,7 +245,7 @@ hr {
   }
 
   .card {
-    background-color: white;
+    background-color: #f0e9e3;
     padding: 30px;
     margin-top: 40px;
    
