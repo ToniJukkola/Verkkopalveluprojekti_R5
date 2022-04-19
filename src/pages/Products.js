@@ -16,7 +16,7 @@ export default function Products({ url, addToCart }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [params])
+  }, [url, params])
 
 
   return (
