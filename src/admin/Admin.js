@@ -9,7 +9,7 @@ export default function Admin() {
 
                 <div className="d-grid gap-3 justify-content-start">
                     <Link className="btn btn-outline-dark" to={"/admin/addproduct/"}>Lisää tuote</Link>
-                <Link className="btn btn-outline-dark" to={"/admin/deleteproduct/"}>Poista tuote</Link>
+                <Link className="btn btn-outline-dark" to={"/admin/deleteproduct/"}>Tuotteiden hallinta</Link>
 
                     <Link className="btn btn-outline-dark" to={"/admin/addcategory/"}>Tuoteryhmien hallinta</Link>
                 </div>
