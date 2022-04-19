@@ -10,10 +10,13 @@ export default function AddProduct({ url }) {
     const [instruction, setInstruction] = useState([]);
     const [othername, setOthername] = useState([]);
     const [price, setPrice] = useState([]);
-    const [category, selectCategory] = useState([]);
+    const [category, setCategory] = useState(1);
     const [categories, setCategories] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [products, setProducts] = useState([]);
 
+        axios.defaults.withCredentials=true;
+        
     useEffect(() => {
         axios.get(url + "products/get_categories.php")
             .then((response) => {
@@ -21,58 +24,59 @@ export default function AddProduct({ url }) {
             }).catch(error => {
                 alert(error.response === undefined ? error : error.response.data.error);
             })
-    }, []);
+    }, [url]);
 
     function addNewProduct(e) {
         e.preventDefault();
-        const json = JSON.stringify({ tuotenimi: name },{ tuotekuvaus: desc },{ ohje: instruction },{ tieteellinen_nimi: othername },{ hinta: price },{ trnimi: category });
-        axios.post(url + 'admin/add_product.php', json, {
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    })
-        .then((response) => {
-            setName(name => [...name, response.data]);
-            setName('');
-                setDesc(desc => [...desc, response.data]);
-                setDesc('');
-                    setInstruction(instruction => [...instruction, response.data]);
-                    setInstruction('');
-                        setOthername(othername => [...othername, response.data]);
-                        setOthername('');
-                            setPrice(price => [...price, response.data]);
-                            setPrice('');
-                                selectCategory(category => [...category, response.data]);
-                                selectCategory('');
-                axios.get(url + "products/get_products.php")
+        if(name !== "" && selectedFile !== null) {
+            const json = JSON.stringify({ 
+                tuotenimi: name,
+                tuotekuvaus: desc,
+                ohje: instruction, 
+                tieteellinen_nimi: othername,
+                hinta: price,
+                trnro: category
+            });
+            console.log(json);
+            
+            axios.post(url + 'admin/add_product.php', json, {
+            headers: {
+            'Content-Type': 'application/json'
+            }
+            })
+            .then((response) => {
+                console.log(response.data);
+                // Lisätään kuva backendiin, kun tiedot on lisätty
+                let data = new FormData();
+                data.append('file', selectedFile[0]);
+                data.append("tuotenro", response.data.tuotenro)
+                console.log(data);
+                axios.post(url + "admin/save_img.php", data)
                 .then((response) => {
-                    setName(response.data);
-                    setDesc(response.data);
-                    setInstruction(response.data);
-                    setOthername(response.data);
-                    setInstruction(response.data);
-                    setPrice(response.data);
-                    selectCategory(response.data);
+                    console.log(response.data);
+                }).catch(error => {
+                    alert(error.response ? error.response.data.error : error);
+                });
+                setName('');
+                setDesc('');
+                setInstruction('');
+                setOthername('');
+                setPrice('');  
+                setCategory(1);
+                axios.get(url + "products/get_products-all.php")
+                .then((response) => {
+                    setProducts(response.data);
                 }).catch(error => {
                     alert(error.response === undefined ? error : error.response.data.error);
                 })
-        }).catch(error => {
-            alert(error.response ? error.response.data.error : error);
-        })
+            }).catch(error => {
+                alert(error.response ? error.response.data.error : error);
+            })
         
 
-        e.preventDefault();
-        // Tää koodi tulee sit Tonin tuotekoodin .then sisälle
-        let data = new FormData();
-        data.append('file', selectedFile[0]);
-        console.log(data);
-        
-        axios.post(url + "admin/save_img.php", data)
-        .then((response) => {
-            console.log(response);
-        }).catch(error => {
-            alert(error.response ? error.response.data.error : error);
-        });
+       
+
+    }
     }
 
     const handleFileSelect = (event) => {
@@ -103,9 +107,9 @@ export default function AddProduct({ url }) {
                         <input className="form-control" type="number" step="0.01" placeholder="Hinta" value={price} onChange={e => setPrice(e.target.value)}></input>
                     </ul>
                     <ul>
-                        <select className='form-control' value={category} onChange={e => selectCategory(e.target.value)}>
+                        <select className='form-control' value={category} onChange={e => setCategory(e.target.value)}>
                             {categories?.map(category => (
-                                <option key={category.trnro}>{category.trnimi}
+                                <option key={category.trnro}value={category.trnro}>{category.trnimi}
                                 </option>))};
                         </select>
                     </ul>
@@ -116,7 +120,19 @@ export default function AddProduct({ url }) {
                         <button type="submit" className="btn btn-outline-dark">Lisää uusi tuote</button>
                     </ul>
                 </div>
-           </form> 
+            </form> 
+            <div className="mt-5 col-lg-6 col-sm"> 
+          <h4>Tuotteet</h4>
+            <ul className="list-group">
+                {products?.map(product => (
+                    <div key={product.tuotenro}>
+                        <form>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">{product.tuotenro}{". "}{product.tuotenimi}</li>
+                        </form>
+                    </div>
+                ))}
+            </ul>
+        </div>
         </main>
     );
 }
