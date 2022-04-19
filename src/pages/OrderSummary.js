@@ -20,7 +20,7 @@ export default function OrderSummary({ url }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [url])
+  }, [url, params])
 
   return (
     <main className="container">
