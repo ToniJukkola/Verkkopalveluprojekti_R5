@@ -20,7 +20,6 @@ import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
 import Edit from "./admin/Edit";
 import EditProduct from "./admin/EditProduct";
-import Search from './pages/Search';
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
