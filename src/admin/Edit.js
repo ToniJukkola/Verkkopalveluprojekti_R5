@@ -41,7 +41,7 @@ export default function GetProduct({ url }) {
                         <form>
                             <li className="list-group-item d-flex justify-content-between align-items-center">
                             <div className="col-md-8">{product.tuotenro}{". "}{product.tuotenimi} </div>
-                            <div><button className="btn btn-outline-dark p-1 m-2" role="button">Muokkaa</button></div>
+                            <div><Link  to={"/Admin/EditProduct/" + product.tuotenro} className="btn btn-outline-dark p-1 m-2" role="button">Muokkaa</Link></div>
                             <div className="col-md-2"><button className="btn btn-outline-danger p-1 m-2 " role="button" onClick={() => DeleteProduct(product.tuotenro)}>Poista <i className="bi bi-trash3"></i></button></div></li>
                         </form>
                     </div>
