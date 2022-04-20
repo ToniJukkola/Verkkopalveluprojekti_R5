@@ -8,6 +8,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   const [inputIndex, setInputIndex] = useState(-1);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [zip, setZip] = useState("");
   const [city, setCity] = useState("");
@@ -43,6 +44,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
     const json = JSON.stringify({
       etunimi: firstname,
       sukunimi: lastname,
+      sposti: email,
       osoite: address,
       postinro: zip,
       postitmp: city,
@@ -58,7 +60,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
       .then((response) => {
         if (validateForm()) {
           emptyCart();
-          goToSummary(response.data.id);
+          goToSummary(response.data.order_id);
         }
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
@@ -137,6 +139,10 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
         <div className="mb-3">
           <label htmlFor="lastname" className="form-label">Sukunimi</label>
           <input type="text" name="lastname" className="form-control" onChange={e => setLastname(e.target.value)} required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="address" className="form-label">Sähköposti</label>
+          <input type="text" name="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
         </div>
         <div className="mb-3">
           <label htmlFor="address" className="form-label">Katuosoite</label>
