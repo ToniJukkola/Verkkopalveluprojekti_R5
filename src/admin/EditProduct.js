@@ -43,14 +43,23 @@ export default function ShowProduct({ url }) {
       
       return (
         <main className="container">
-             <div>
-                <input value={tuotenimi} onChange={e => setTuotenimi(e.target.value)} />
-                <input value={hinta} onChange={e => setHinta(e.target.value)} />
-                <input value={tieteellinen_nimi} onChange={e => setTieteellinen_nimi(e.target.value)} />
-                <input value={tuotekuvaus} onChange={e => setTuotekuvaus(e.target.value)} />
-                <input value={ohje} onChange={e => setOhje(e.target.value)} />
-                <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product?.tuotenro + ".jpg"} alt={product.tuotenimi} />
+             
+             <h1>Tietojen muokkaaminen</h1>
+             <Link className="p-3" to={"/admin/edit"}>&larr; Takaisin tuotteiden hallintaan</Link>
+             <form>
+             <div className="mt-5 col-lg-6 col-sm">
+               
+                <ul><input className="form-control" value={tuotenimi} onChange={e => setTuotenimi(e.target.value)} /></ul>
+                <ul><input className="form-control" type="number" step="0.01" value={hinta} onChange={e => setHinta(e.target.value)} /></ul>
+                <ul><input className="form-control" value={tieteellinen_nimi} onChange={e => setTieteellinen_nimi(e.target.value)} /></ul>
+                <ul><input className="form-control" value={tuotekuvaus} onChange={e => setTuotekuvaus(e.target.value)} /></ul>
+                <ul><input className="form-control" value={ohje} onChange={e => setOhje(e.target.value)} /></ul>
+                {/* Aleksi lupas hoitaa tän kuva-inputin ↧ */}
+                <ul><img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product?.tuotenro + ".jpg"} alt={product.tuotenimi} /></ul>
+                <ul><button type="submit" className="btn btn-outline-dark">Päivitä</button></ul>
             </div>
+            </form>
+            
         </main>
       );
 
