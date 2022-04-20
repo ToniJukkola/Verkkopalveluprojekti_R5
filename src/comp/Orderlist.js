@@ -12,7 +12,7 @@ export default function Orderlist({ url }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [url, orders])
+  }, [url])
 
   return (
     <>

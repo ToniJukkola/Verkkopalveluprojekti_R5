@@ -98,7 +98,7 @@ function App() {
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
-            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
+            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} categories={categories} setCategories={setCategories} />} />
             <Route path="/Admin/Edit" element={<Edit url={BACKEND_URL} />} />
             <Route path="/Admin/EditProduct/:productID" element={<EditProduct url={BACKEND_URL} />} />
           </Routes>
