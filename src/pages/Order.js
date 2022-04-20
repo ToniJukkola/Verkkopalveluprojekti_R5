@@ -57,8 +57,8 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
       .then((response) => {
         if (validateForm()) {
           emptyCart();
-          setIsFinished(true);
           setOrderID(response.data.order_id);
+          setIsFinished(true);
         }
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);

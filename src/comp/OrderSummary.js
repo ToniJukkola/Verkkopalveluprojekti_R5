@@ -17,7 +17,7 @@ export default function OrderSummary({ url, order }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [url])
+  }, [order, url])
 
   return (
     <main className="container">
