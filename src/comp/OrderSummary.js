@@ -1,17 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
 
-export default function OrderSummary({ url }) {
+export default function OrderSummary({ url, order }) {
   const [orderId, setOrderId] = useState("");
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [customer, setCustomer] = useState([])
 
-  let params = useParams();
-
   useEffect(() => {
-    axios.get(url + "order/summary_order.php/" + params.orderID)
+    axios.get(url + "order/summary_order.php/" + order)
       .then((response) => {
         setOrderId(response.data.order);
         setOrderedProducts(response.data.products);
@@ -20,7 +17,7 @@ export default function OrderSummary({ url }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [url, params])
+  }, [url])
 
   return (
     <main className="container">

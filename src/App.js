@@ -14,7 +14,6 @@ import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Order from './pages/Order';
 import Search from './pages/Search';
-import OrderSummary from './pages/OrderSummary';
 import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
@@ -95,7 +94,6 @@ function App() {
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/yhteenveto-tilauksesta/:orderID" element={<OrderSummary url={BACKEND_URL} />} />
             
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
