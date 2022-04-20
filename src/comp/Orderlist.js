@@ -12,7 +12,7 @@ export default function Orderlist({ url }) {
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
-  }, [url])
+  }, [url, orders])
 
   return (
     <>
@@ -23,7 +23,8 @@ export default function Orderlist({ url }) {
             <th>#</th>
             <th>Asiakas</th>
             <th>Tilattu</th>
-            <th className="text-end">Tuotteet</th>
+            <th>Tuotteet</th>
+            <th className="text-end">Käsitelty?</th>
           </tr>
         </thead>
         <tbody>
@@ -33,16 +34,20 @@ export default function Orderlist({ url }) {
               <td>{order.tilausnro}</td>
               <td>{order.asiakastiedot.etunimi} {order.asiakastiedot.sukunimi} (asnro: #{order.asiakas_id})</td>
               <td>{order.tilausaika}</td>
-              <td className="text-end">
+              <td>
                 <ul className="list-unstyled">
                 {order.tuotteet.map(tuote => (
                 <li key={tuote.tuotenro}>{tuote.tuotenimi} x {tuote.kpl}</li>
               ))}
               </ul>
               </td>
+              <td className="text-end">
+                {order.kasitelty == 0 ? <input type="checkbox"/> : <input type="checkbox" defaultChecked />}
+                </td>
             </tr>
           ))}
           {/* Tilausten mappaus päättyy */}
+          
         </tbody>
       </table>
     </>
