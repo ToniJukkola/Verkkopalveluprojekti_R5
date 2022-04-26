@@ -228,9 +228,15 @@ footer>div {
 
 .grid_container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: center;
+}
+
+@media screen and (min-width:1000px) {
+  .grid_container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .product_name {

@@ -41,6 +41,7 @@ function App() {
 
   // --- Ostoskorihommat alkaa
   const [cart, setCart] = useState([]);
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     if ("cart" in localStorage) {
@@ -48,15 +49,17 @@ function App() {
     }
   }, [])
 
-  function addToCart(product) {
+  function addToCart(product, amount) {
     if (cart.some(item => item.tuotenro === product.tuotenro)) {
       const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
-      updateAmount(parseInt(existingProduct[0].amount) + 1, product);
+      updateAmount(parseInt(existingProduct[0].amount) + Number(amount), product);
+      setAmount(1);
     } else {
-      product["amount"] = 1;
+      product["amount"] = Number(amount);
       const newCart = [...cart, product];
       setCart(newCart);
       localStorage.setItem("cart", JSON.stringify(newCart));
+      setAmount(1);
     }
   }
 
@@ -92,9 +95,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home url={BACKEND_URL} />} />
             <Route path="/ota-yhteytta" element={<Contact />} />
-            <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
+            <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
+            <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} amount={amount} />} />
+            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />

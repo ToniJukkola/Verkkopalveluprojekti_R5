@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-export default function Products({ url, addToCart }) {
+export default function Products({ url, addToCart, amount }) {
   const [categoryName, setCategoryName] = useState("");
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +45,7 @@ export default function Products({ url, addToCart }) {
                   <Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>Lue lisää</Link>
                 </p>
 
-                <button className="btn btn-accent" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
+                <button className="btn btn-accent" onClick={e => addToCart(product, 1)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
               </div>
             </div>
           ))}
