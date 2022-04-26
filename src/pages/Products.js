@@ -23,7 +23,7 @@ export default function Products({ url, addToCart }) {
 
   if (isLoading) {
     return (
-      <main className="container"><h3 className="display-3 text-center">Ladataan... tuotteita</h3></main>
+      <main className="container"><h3 className="display-3 text-center">Ladataan tuotteita... </h3></main>
     )
   } else {
 
