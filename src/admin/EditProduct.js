@@ -5,13 +5,12 @@ import { useParams } from 'react-router-dom'
 
 
 export default function ShowProduct({ url }) {
-    const [product, setProduct] = useState([]);
     const [tuotenimi, setTuotenimi] = useState([]);
     const [hinta, setHinta] = useState([]);
     const [tieteellinen_nimi, setTieteellinen_nimi] = useState([]);
     const [tuotekuvaus, setTuotekuvaus] = useState([]);
     const [ohje, setOhje] = useState([]);
-    const [category, setCategory] = useState([]);
+    const [category, setCategory] = useState(1);
     const [categories, setCategories] = useState([]);
     const [trnro, setTrnro] = useState(1);
 
@@ -25,7 +24,6 @@ export default function ShowProduct({ url }) {
                 setTieteellinen_nimi(response.data[0].tieteellinen_nimi)
                 setTuotekuvaus(response.data[0].tuotekuvaus)
                 setOhje(response.data[0].ohje)
-                setProduct(response.data);
                 setTrnro(response.data[0].trnro);
                 console.log(response.data);
                 axios.get(url + "products/get_categories.php")
