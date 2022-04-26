@@ -11,6 +11,9 @@ export default function ShowProduct({ url }) {
     const [tieteellinen_nimi, setTieteellinen_nimi] = useState([]);
     const [tuotekuvaus, setTuotekuvaus] = useState([]);
     const [ohje, setOhje] = useState([]);
+    const [category, setCategory] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [trnro, setTrnro] = useState(1);
 
     let params = useParams();
 
@@ -23,7 +26,17 @@ export default function ShowProduct({ url }) {
                 setTuotekuvaus(response.data[0].tuotekuvaus)
                 setOhje(response.data[0].ohje)
                 setProduct(response.data);
+                setTrnro(response.data[0].trnro);
                 console.log(response.data);
+                axios.get(url + "products/get_categories.php")
+            .then((response) => {
+              if (response.data.trnro == trnro) {
+                setCategory(response.data);
+              }
+              setCategories(response.data);
+            }).catch(error => {
+                alert(error.response === undefined ? error : error.response.data.error);
+            })
             }).catch(error => {
                 alert(error.response === undefined ? error : error.response.data.error);
             })
@@ -36,7 +49,8 @@ export default function ShowProduct({ url }) {
           tuotekuvaus: tuotekuvaus,
           hinta: hinta, 
           tieteellinen_nimi: tieteellinen_nimi,
-          ohje: ohje
+          ohje: ohje,
+          trnro: category
         });
         axios.post(url + "admin/edit_product.php", json, {
           headers: {
@@ -61,6 +75,13 @@ export default function ShowProduct({ url }) {
                 <ul><input className="form-control" value={tieteellinen_nimi} onChange={e => setTieteellinen_nimi(e.target.value)} /></ul>
                 <ul><input className="form-control" value={tuotekuvaus} onChange={e => setTuotekuvaus(e.target.value)} /></ul>
                 <ul><input className="form-control" value={ohje} onChange={e => setOhje(e.target.value)} /></ul>
+                <ul><select className='form-control' value={category} onChange={e => setCategory(e.target.value)}>
+                            {categories?.map(category => (
+                                <option key={category.trnro}value={category.trnro}>{category.trnimi}
+                                </option>))};
+                    </select>
+                </ul>
+                    
                 {/* Aleksi lupas hoitaa tän kuva-inputin ↧ */}
                {/*<ul><img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product?.tuotenro + ".jpg"} alt={product.tuotenimi} /></ul>*/}
                 <ul><button type="submit" className="btn btn-outline-dark">Päivitä</button></ul>
