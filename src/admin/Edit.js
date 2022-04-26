@@ -30,16 +30,19 @@ export default function GetProduct({ url }) {
 
     return (
     <main className="container">
-        <h1>Tuotteiden poistaminen</h1>
+        <h1>Tuotteiden hallinta</h1>
             <Link className="p-3" to={"/admin/"}>&larr; Takaisin ylläpidon etusivulle</Link>
             <br/><br/>
        <div className="mt-5 col-lg-6 col-sm">  
-          <h4>Valitse tuotteet jotka haluat poistaa valikoimasta</h4>
+          <h4>Valitse tuotteet joita haluat muokata</h4>
             <ul className="list-group">
                 {products?.map(product => (
                     <div key={product.tuotenro}>
                         <form>
-                            <li className="list-group-item d-flex justify-content-between align-items-center">{product.tuotenro}{". "}{product.tuotenimi} <button className="btn btn-outline-danger p-1 m-2" role="button" onClick={() => DeleteProduct(product.tuotenro)}>Poista <i className="bi bi-trash3"></i></button></li>
+                            <li className="list-group-item d-flex justify-content-between align-items-center">
+                            <div className="col-md-8">{product.tuotenro}{". "}{product.tuotenimi} </div>
+                            <div><Link  to={"/Admin/EditProduct/" + product.tuotenro} className="btn btn-outline-dark p-1 m-2" role="button">Muokkaa</Link></div>
+                            <div className="col-md-2"><button className="btn btn-outline-danger p-1 m-2 " role="button" onClick={() => DeleteProduct(product.tuotenro)}>Poista <i className="bi bi-trash3"></i></button></div></li>
                         </form>
                     </div>
                 ))}

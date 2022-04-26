@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 // Import components
 import Footer from "./comp/Footer";
 import Navbar from "./comp/Navbar";
@@ -12,18 +13,35 @@ import Products from "./pages/Products";
 import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Order from './pages/Order';
+import Search from './pages/Search';
 import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
-import DeleteProduct from "./admin/DeleteProduct";
-import Search from './pages/Search';
+import Edit from "./admin/Edit";
+import EditProduct from "./admin/EditProduct";
+import Register from "./pages/RegisterForm";
+import Login from './comp/Login';
+
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
 function App() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    axios.get(BACKEND_URL + "products/get_categories.php")
+      .then((response) => {
+        const json = response.data;
+        setCategories(json);
+      }).catch(error => {
+        alert(error.response === undefined ? error : error.response.data.error);
+      })
+  }, []);
+
   // --- Ostoskorihommat alkaa
   const [cart, setCart] = useState([]);
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     if ("cart" in localStorage) {
@@ -31,15 +49,17 @@ function App() {
     }
   }, [])
 
-  function addToCart(product) {
+  function addToCart(product, amount) {
     if (cart.some(item => item.tuotenro === product.tuotenro)) {
       const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
-      updateAmount(parseInt(existingProduct[0].amount) + 1, product);
+      updateAmount(parseInt(existingProduct[0].amount) + Number(amount), product);
+      setAmount(1);
     } else {
-      product["amount"] = 1;
+      product["amount"] = Number(amount);
       const newCart = [...cart, product];
       setCart(newCart);
       localStorage.setItem("cart", JSON.stringify(newCart));
+      setAmount(1);
     }
   }
 
@@ -68,27 +88,31 @@ function App() {
       <div className="wrapper">
         <Router>
           <header>
-            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} />
-            <Breadcrumb url={BACKEND_URL} />
+            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} />
+            <Breadcrumb url={BACKEND_URL} categories={categories} />
           </header>
 
           <Routes>
             <Route path="/" element={<Home url={BACKEND_URL} />} />
             <Route path="/ota-yhteytta" element={<Contact />} />
-            <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
+            <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
+            <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} amount={amount} />} />
+            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
+            <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
+            <Route path="/kirjaudu" element={<Login url={BACKEND_URL} />} />
+
             
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
-            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} />} />
-            <Route path="/Admin/DeleteProduct" element={<DeleteProduct url={BACKEND_URL} />} />
+            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} categories={categories} setCategories={setCategories} />} />
+            <Route path="/Admin/Edit" element={<Edit url={BACKEND_URL} />} />
+            <Route path="/Admin/EditProduct/:productID" element={<EditProduct url={BACKEND_URL} />} />
           </Routes>
 
-          <Footer shopname={SHOP_NAME} url={BACKEND_URL} />
+          <Footer shopname={SHOP_NAME} categories={categories} />
         </Router>
       </div>
     </>

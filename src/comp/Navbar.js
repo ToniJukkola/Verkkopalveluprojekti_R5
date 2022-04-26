@@ -1,23 +1,11 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from './Cart';
 
-export default function Navbar({ url, shopname, cart }) {
-  const [categories, setCategories] = useState([]);
+export default function Navbar({ shopname, cart, categories }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get(url + "products/get_categories.php")
-      .then((response) => {
-        const json = response.data;
-        setCategories(json);
-      }).catch(error => {
-        alert(error.response === undefined ? error : error.response.data.error);
-      })
-  }, [url]);
 
   function search(e) {
     e.preventDefault();
@@ -42,7 +30,7 @@ export default function Navbar({ url, shopname, cart }) {
               <Link className="nav-link" to="/ota-yhteytta">Ota yhteyttä</Link>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Tuotteet
               </a>
@@ -66,7 +54,7 @@ export default function Navbar({ url, shopname, cart }) {
             <Link to={"/haku/" + searchTerm} className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></Link>
           </form>
           <div className="navbar-icons">
-            <Link className="bi bi-person-circle" to={"/admin/"}></Link>
+            <Link className="bi bi-person-circle" to={"/kirjaudu/"}></Link>
             <Link to={"/ostoskori"}><Cart cart={cart} /></Link>
           </div>
         </div>

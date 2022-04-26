@@ -1,20 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function AddCategory({ url }) {
-  const [categories, setCategories] = useState([]);
+export default function AddCategory({ url, categories, setCategories }) {
   const [newCategory, setnewCategory] = useState([]);
-
-  useEffect(() => {
-    axios.get(url + "products/get_categories.php")
-      .then((response) => {
-        setCategories(response.data);
-      }).catch(error => {
-        alert(error.response === undefined ? error : error.response.data.error);
-      })
-  }, [])
-
   function AddTrnimi(e) {
     e.preventDefault();
     const json = JSON.stringify({ trnimi: newCategory });

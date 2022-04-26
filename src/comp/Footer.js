@@ -1,20 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function Footer({ url, shopname }) {
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        axios.get(url + "products/get_categories.php")
-            .then((response) => {
-                const json = response.data;
-                setCategories(json);
-            }).catch(error => {
-                alert(error.response === undefined ? error : error.response.data.error);
-            })
-    }, [])
-
+export default function Footer({ shopname, categories }) {
     return (
         <footer className="container-fluid">
             <div>
