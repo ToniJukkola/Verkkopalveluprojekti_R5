@@ -54,7 +54,7 @@ export default function Navbar({ shopname, cart, categories }) {
             <Link to={"/haku/" + searchTerm} className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></Link>
           </form>
           <div className="navbar-icons">
-            <Link className="bi bi-person-circle" to={"/admin/"}></Link>
+            <Link className="bi bi-person-circle" to={"/kirjaudu/"}></Link>
             <Link to={"/ostoskori"}><Cart cart={cart} /></Link>
           </div>
         </div>

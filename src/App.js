@@ -20,6 +20,7 @@ import AddCategory from "./admin/AddCategory";
 import Edit from "./admin/Edit";
 import EditProduct from "./admin/EditProduct";
 import Register from "./pages/RegisterForm";
+import Login from './comp/Login';
 
 
 const SHOP_NAME = "Vihervaja";
@@ -97,6 +98,8 @@ function App() {
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
+            <Route path="/kirjaudu" element={<Login url={BACKEND_URL} />} />
+
             
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
