@@ -19,6 +19,8 @@ import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
 import Edit from "./admin/Edit";
 import EditProduct from "./admin/EditProduct";
+import Register from "./pages/RegisterForm";
+
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
@@ -94,6 +96,7 @@ function App() {
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} />} />
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
+            <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
             
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
