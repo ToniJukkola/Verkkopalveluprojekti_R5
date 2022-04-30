@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Hero from "../comp/Hero";
 
 export default function Home({ url }) {
     const [products, setProducts] = useState([]);

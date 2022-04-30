@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { createRef, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import uuid from 'react-uuid'
 import OrderSummary from '../comp/OrderSummary';
 
@@ -133,24 +134,32 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   if (isFinished === false) {
     return (
       <>
+      <div className="cart-container">
         <h3>Ostoskorin tuotteet</h3>
-        <table>
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>Tuote</th>
+              <th>Hinta à</th>
+              <th>Kpl</th>
+              <th className="text-end">Hinta yhteensä</th>
+            </tr>
+          </thead>
           <tbody>
             {cart.map((product, index) => {
               sum += parseFloat(product.hinta * product.amount);
               return (
                 <tr key={uuid()}>
-                  <td>{product.tuotenimi}</td>
+                  <td valign="middle"><Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>{product.tuotenimi}</Link> x {product.amount}</td>
                   <td>{product.hinta} €</td>
-                  <td><input style={{ width: 100 + "px", padding: 5 + "px" }} ref={inputs[index]} type="number" min="1" value={product.amount} onChange={e => changeAmount(e, product)} ></input></td>
-                  <td><button className="btn btn-dark" onClick={() => removeFromCart(product)}>Poista</button></td>
+                  <td><input style={{ width: 100 + "px", padding: 5 + "px" }} ref={inputs[index]} type="number" min="1" value={product.amount} onChange={e => changeAmount(e, product)} ></input> <button className="btn btn-dark" onClick={() => removeFromCart(product)}>Poista kaikki</button></td>
+                  <td className="text-end">{(product.hinta * product.amount)} €</td>
                 </tr>
               )
             })}
             <tr key={uuid} style={{ borderTop: 1 + "px solid" }}>
-              <td>Yhteensä</td>
-              <td>{sum.toFixed(2)} €</td>
-              <td colSpan={2}></td>
+            <th colSpan={3} className="bg-light">Loppusumma</th>
+            <td className="text-end bg-light">{sum.toFixed(2)} €</td>
             </tr>
           </tbody>
         </table>
@@ -189,6 +198,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
         {error === "" ? "" :
           <div className="alert alert-danger mt-3">{error}</div>
         }
+        </div>
       </>
     )
   } else {

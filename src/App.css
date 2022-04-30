@@ -123,19 +123,6 @@ a:hover {
   background-color: var(--gray-bg-color-lighter);
 }
 
-/* HERO */
-
-.hero {
-  display: flex;
-  justify-content: center;
-}
-
-.hero img {
-  max-height: calc(100vh - 100px);
-  width: 100%;
-  object-fit: cover;
-}
-
 /* MAIN */
 
 main {
@@ -145,6 +132,11 @@ main {
 
 .login-container {
   max-width: 600px;
+  margin: 0 auto;
+}
+
+.cart-container {
+  max-width: 1000px;
   margin: 0 auto;
 }
 
