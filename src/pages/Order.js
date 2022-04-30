@@ -13,6 +13,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   const [zip, setZip] = useState("");
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
+  const [zipError, setZipError] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [orderID, setOrderID] = useState("");
 
@@ -78,6 +79,12 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
       return false;
     }
 
+    // Tarkistetaan sisältääkö sähköposti @
+    if (!email.includes("@")) {
+      setError("Virheellinen sähköpostiosoite.");
+      return false;
+    }
+
     // Tarkistetaan onko postinumero 5 merkkiä ja sisältää vain numeroita
     if (zip.length !== 5) {
       setError("Postinumeron on oltava tasan viisi merkkiä pitkä.");
@@ -93,18 +100,31 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
     }
 
     if (zipCheck < zip.length) {
-      setError("Postinumero voi sisältää vain numeroita.")
+      setError("Postinumero voi sisältää vain numeroita.");
+      return false;
+    }
+
+    // Tarkistetaan ettei postinumero ole virheellinen
+    if (zipError) {
+      setError(zipError);
       return false;
     }
 
     setError("");
+    setZipError("");
     return true;
   }
 
   function handleZip() {
     axios.get(url + "order/zipcodes.php/" + zip)
-      .then((response) => {
-        setCity(response.data["toimipaikka"])
+    .then((response) => {
+      if (response.data["toimipaikka"] === undefined) {
+        setZipError("Virheellinen postinumero.");
+        setCity("!! VIRHEELLINEN POSTINUMERO !!");
+      } else {
+        setZipError("");
+        setCity(response.data["toimipaikka"]);
+      }
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
@@ -141,27 +161,27 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
           <h3>Toimitustiedot</h3>
           <div className="mb-3">
             <label htmlFor="firstname" className="form-label">Etunimi</label>
-            <input type="text" name="firstname" className="form-control" onChange={e => setFirstname(e.target.value)} required />
+            <input type="text" name="firstname" id="firstname" className="form-control" onChange={e => setFirstname(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label htmlFor="lastname" className="form-label">Sukunimi</label>
-            <input type="text" name="lastname" className="form-control" onChange={e => setLastname(e.target.value)} required />
+            <input type="text" name="lastname" id="lastname" className="form-control" onChange={e => setLastname(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Sähköposti</label>
-            <input type="text" name="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
+            <input type="text" name="email" id="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label htmlFor="address" className="form-label">Katuosoite</label>
-            <input type="text" name="address" className="form-control" onChange={e => setAddress(e.target.value)} required />
+            <input type="text" name="address" id="address" className="form-control" onChange={e => setAddress(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label htmlFor="zip" className="form-label">Postinumero</label>
-            <input type="text" name="zip" className="form-control" onChange={e => setZip(e.target.value)} onBlur={handleZip} required />
+            <input type="text" name="zip" id="zip" className="form-control" onChange={e => setZip(e.target.value)} onBlur={handleZip} required />
           </div>
           <div className="mb-3">
             <label htmlFor="city" className="form-label">Postitoimipaikka</label>
-            <input type="text" name="city" value={city} className="form-control" onChange={e => setCity(e.target.value)} required disabled />
+            <input type="text" name="city" id="city" value={city} className="form-control" required disabled />
           </div>
           <button type="submit" className="btn btn-dark">Lähetä tilaus</button>
         </form>

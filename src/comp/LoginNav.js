@@ -19,7 +19,7 @@ export default function LoginNav({ token, setToken }) {
   return (
     <>
       <Link className="bi bi-x-circle" to={"/kirjaudu-ulos"} title="Kirjaudu ulos" onClick={logout}></Link>
-      <Link className="bi bi-person-circle" to={"/"} title="Omat tiedot"></Link>
+      <Link className="bi bi-person-circle" to={"/omat-tiedot"} title="Omat tiedot"></Link>
       <Link className="bi bi-gear" to={"/admin"} title="Admin-paneeli"></Link>
     </>
   )
