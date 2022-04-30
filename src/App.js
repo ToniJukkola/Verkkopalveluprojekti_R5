@@ -98,7 +98,7 @@ function App() {
     localStorage.removeItem("cart");
   }
   // --- Ostoskorihommat päättyy
-  
+
   return (
     <>
       <div className="wrapper">
@@ -107,32 +107,35 @@ function App() {
             <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} token={token} setToken={setToken} />
             <Breadcrumb url={BACKEND_URL} categories={categories} />
           </header>
+          <main className="container">
 
-          <Routes>
-            {/* ----- REKISTERÖITYMINEN & KIRJAUTUMINEN */}
-            <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
-            <Route path="/kirjaudu" element={<Login url={BACKEND_URL} login={login} token={token} />} />
-            <Route path="/kirjaudu-ulos" element={<Logout />} />
+            <Routes>
+              {/* ----- REKISTERÖITYMINEN & KIRJAUTUMINEN */}
+              <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
+              <Route path="/kirjaudu" element={<Login url={BACKEND_URL} login={login} token={token} />} />
+              <Route path="/kirjaudu-ulos" element={<Logout />} />
 
-            {/* ------ PERUSNAVIGAATIO */}
-            <Route path="/" element={<Home url={BACKEND_URL} />} />
-            <Route path="/ota-yhteytta" element={<Contact />} />
-            <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
-            <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} amount={amount} />} />
-            <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
-            <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
-            <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/omat-tiedot" element={<Profile url={BACKEND_URL} token={token} />} />
+              {/* ------ PERUSNAVIGAATIO */}
+              <Route path="/" element={<Home url={BACKEND_URL} />} />
+              <Route path="/ota-yhteytta" element={<Contact />} />
+              <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
+              <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} amount={amount} />} />
+              <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
+              <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
+              <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
+              <Route path="/omat-tiedot" element={<Profile url={BACKEND_URL} token={token} />} />
 
-            {/* ----- ADMIN */}
-            <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
-            <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
-            <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} categories={categories} setCategories={setCategories} />} />
-            <Route path="/Admin/Edit" element={<Edit url={BACKEND_URL} />} />
-            <Route path="/Admin/EditProduct/:productID" element={<EditProduct url={BACKEND_URL} />} />
-          </Routes>
+              {/* ----- ADMIN */}
+              <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
+              <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
+              <Route path="/Admin/AddCategory" element={<AddCategory url={BACKEND_URL} categories={categories} setCategories={setCategories} />} />
+              <Route path="/Admin/Edit" element={<Edit url={BACKEND_URL} />} />
+              <Route path="/Admin/EditProduct/:productID" element={<EditProduct url={BACKEND_URL} />} />
+            </Routes>
 
-          <Footer shopname={SHOP_NAME} categories={categories} />
+          </main>
+
+          <Footer shopname={SHOP_NAME} categories={categories} token={token} setToken={setToken} />
         </Router>
       </div>
     </>

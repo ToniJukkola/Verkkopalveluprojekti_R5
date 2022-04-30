@@ -19,7 +19,7 @@ export default function Search({ url, addToCart }) {
 
 
     return (
-        <main className="container">
+        <>
         <h1>{'Hakusanalla: "' + params.searchTerm + '" löytyi ' + products.length + " tuotetta."}</h1>
         <div className="product-list-wrapper">
           {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
@@ -41,6 +41,6 @@ export default function Search({ url, addToCart }) {
           ))}
           {/* TUOTEKORTTIEN MAPPAUS PÄÄTTYY */}
         </div>
-      </main>
+      </>
     );
 }

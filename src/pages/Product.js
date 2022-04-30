@@ -17,7 +17,7 @@ export default function Product({ url, addToCart, amount, setAmount }) {
   }, [url, params])
 
   return (
-    <main className="container">
+    <>
       <div className='grid_container'>
         <div>
           <h3 className='product_name'>{product.tuotenimi}</h3>
@@ -44,6 +44,6 @@ export default function Product({ url, addToCart, amount, setAmount }) {
           </div>
         </div>
       </div>
-    </main>
+    </>
   )
 }

@@ -20,7 +20,7 @@ export default function OrderSummary({ url, order }) {
   }, [order, url])
 
   return (
-    <main className="container">
+    <>
       <h1>Tilauksen #{orderId} yhteenveto</h1>
 
       <h2>Tilaamasi tuotteet</h2>
@@ -74,6 +74,6 @@ export default function OrderSummary({ url, order }) {
         </li>
       </ol>
 
-    </main>
+    </>
   )
 }

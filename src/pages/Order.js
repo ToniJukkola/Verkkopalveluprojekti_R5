@@ -117,14 +117,14 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
 
   function handleZip() {
     axios.get(url + "order/zipcodes.php/" + zip)
-    .then((response) => {
-      if (response.data["toimipaikka"] === undefined) {
-        setZipError("Virheellinen postinumero.");
-        setCity("!! VIRHEELLINEN POSTINUMERO !!");
-      } else {
-        setZipError("");
-        setCity(response.data["toimipaikka"]);
-      }
+      .then((response) => {
+        if (response.data["toimipaikka"] === undefined) {
+          setZipError("Virheellinen postinumero.");
+          setCity("!! VIRHEELLINEN POSTINUMERO !!");
+        } else {
+          setZipError("");
+          setCity(response.data["toimipaikka"]);
+        }
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
       })
@@ -132,7 +132,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
 
   if (isFinished === false) {
     return (
-      <main className="container">
+      <>
         <h3>Ostoskorin tuotteet</h3>
         <table>
           <tbody>
@@ -189,13 +189,13 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
         {error === "" ? "" :
           <div className="alert alert-danger mt-3">{error}</div>
         }
-      </main>
+      </>
     )
   } else {
     return (
-      <main className="container">
+      <>
         <OrderSummary url={url} order={orderID} />
-      </main>
+      </>
     )
   }
 }

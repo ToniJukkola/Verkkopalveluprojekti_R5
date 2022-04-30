@@ -19,13 +19,13 @@ export default function ProductsAll({ url, addToCart, amount }) {
 
     if (isLoading) {
         return (
-            <main className="container"><h3 className="display-3 text-center">Ladataan tuotteita...</h3></main>
+            <><h3 className="display-3 text-center">Ladataan tuotteita...</h3></>
         )
     } else {
 
         return (
 
-            <main className="container">
+            <>
                 <h1>Kaikki tuotteet</h1>
                 <div className="product-list-wrapper">
                     {/* TUOTEKORTTIEN MAPPAUS ALKAA */}
@@ -47,7 +47,7 @@ export default function ProductsAll({ url, addToCart, amount }) {
                     ))}
                     {/* TUOTEKORTTIEN MAPPAUS PÄÄTTYY */}
                 </div>
-            </main>
+            </>
         )
     }
 }

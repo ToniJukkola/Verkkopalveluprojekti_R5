@@ -4,7 +4,7 @@ import Hero from "../comp/Hero";
 
 export default function Home({ url }) {
     const [products, setProducts] = useState([]);
-    
+
     useEffect(() => {
         axios.get(url + "products/get_products-all.php")
             .then((response) => {
@@ -16,25 +16,15 @@ export default function Home({ url }) {
 
     return (
         <>
-            <Hero />
-
-            <main className="container">
-                <div id="carouselExampleSlidesOnly" className="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        {products?.map((product, index) => 
-
-                        index === 0 ? (
-                            <div className="carousel-item active" key={index}>
-                            <img className="d-block w-100" src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} />
-                            </div>
-                        ) : (
-                            <div className="carousel-item" key={index}>
-                            <img className="d-block w-100" src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} />
-                            </div>
-                        ))}
-                    </div>
+            <section className="welcome-section">
+                <img className="deco-img" src="http://localhost/verkkopalveluprojekti_r5_backend/images/vihervajakesken.jpg" alt="Koristekuva nainen kasvien keskellä" />
+                <div>
+                    <h3>Tervetuloa huonekasvien verkkokauppa Vihervajaan!</h3>
+                    <p className="mt-4">Vihervaja Oy on vuonna 2022 perustettu verkkokauppa viherpeukaloille ja vihreistä peukaloista haaveileville.</p>
+                    <p className="mt-4">Valikoimastamme löydät niin helppohoitoiset huonekasvit aloittelijalle kuin vaativammat kasvikaverit kokeneemmille konkareillekin, ruukkuja, aluslautasia ja muita oheistarvikkeita unohtamatta.</p>
+                    <p className="lead mt-4">Älä ole vihervajaa – tilaa oma kasvikaverisi heti tänään!</p>
                 </div>
-            </main>
+            </section>
         </>
     );
 }

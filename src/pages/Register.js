@@ -62,7 +62,7 @@ export default function Register({ url }) {
   }
   if (isSuccess === false) {
     return (
-      <main className="container">
+      <>
         <div className="login-container">
           <h1>Rekisteröidy käyttäjäksi</h1>
           <form className="mt-5" onSubmit={register}>
@@ -93,11 +93,11 @@ export default function Register({ url }) {
             <div className="alert alert-danger mt-3">{error}</div>
           }
         </div>
-      </main>
+      </>
     )
   } else {
     return (
-      <main className="container">
+      <>
         <h2>Rekisteröityminen onnistui!</h2>
         <div className="alert alert-success mt-3">
           <p>Tervetuloa <strong>{registerResponse.etunimi}</strong>! Olet rekisteröitynyt onnistuneesti.</p>
@@ -105,7 +105,7 @@ export default function Register({ url }) {
           <p>Asiakasnumerosi on <strong>{registerResponse.asiakasnro}</strong></p>
           <p>Haluatko <Link to={"/kirjaudu"}>kirjautua sisään</Link>?</p>
         </div>
-      </main>
+      </>
     )
   }
 }

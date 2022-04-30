@@ -100,7 +100,7 @@ export default function Profile({ url, token }) {
   }
 
   return (
-    <main className="container">
+    <>
       <h1>Oma profiili</h1>
       <h2>Yhteystiedot</h2>
       <div className="profile-info">
@@ -168,8 +168,8 @@ export default function Profile({ url, token }) {
       {editMode ? "" : <button className="btn btn-accent mt-3" onClick={handleEditButton}><i className="bi bi-pencil-square"></i> Muokkaa osoitetietoja</button>}
       {editMessage ? <div className="mt-3 alert alert-warning"><h5>Tiedot muutettu onnistuneesti</h5></div> : ""}
       {error === "" ? "" :
-          <div className="alert alert-danger mt-3">{error}</div>
-        }
-    </main>
+        <div className="alert alert-danger mt-3">{error}</div>
+      }
+    </>
   )
 }

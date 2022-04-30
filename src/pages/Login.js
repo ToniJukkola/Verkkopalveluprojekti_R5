@@ -104,7 +104,7 @@ export default function Login({ url, login }) {
 
   if (isSuccess === false) {
     return (
-      <main className="container">
+      <>
         <div className="login-container">
           <h1>Kirjaudu sisään</h1>
           <div className="mt-5" onChange={handleChoice}>
@@ -145,18 +145,18 @@ export default function Login({ url, login }) {
             <div className="alert alert-danger mt-3">{error}</div>
           }
         </div>
-      </main>
+        </>
     )
   } else {
     return (
-      <main className="container">
+      <>
         <div className="login-container">
           <h2>Kirjautuminen onnistui!</h2>
           <div className="alert alert-success mt-3">
             Tervetuloa <strong>{loginResponse.tunnus}</strong>! Olet kirjautunut sisään onnistuneesti.
           </div>
         </div>
-      </main>
+      </>
     )
   }
 }
