@@ -13,6 +13,7 @@ export default function ShowProduct({ url }) {
     const [category, setCategory] = useState(1);
     const [categories, setCategories] = useState([]);
     const [trnro, setTrnro] = useState(1);
+    const [selectedFile, setSelectedFile] = useState(null);
 
     let params = useParams();
 
@@ -54,11 +55,26 @@ export default function ShowProduct({ url }) {
           headers: {
             "Content-Type": "application/json"
           }
-        })
+        }).then((response) => {
+          // Lisätään kuva backendiin, kun tiedot on lisätty
+          if(selectedFile !== null) {
+            let data = new FormData();
+            data.append('file', selectedFile[0]);
+            data.append("tuotenro", params.productID)
+            axios.post(url + "admin/save_img.php", data)
+            .catch(error => {
+                alert(error.response ? error.response.data.error : error);
+            });
+          }
+          })
           .catch(error => {
             alert(error.response ? error.response.data.error : error);
           });
         }
+
+    const handleFileSelect = (event) => {
+          setSelectedFile(event.target.files);
+    }
       
       return (
         <main className="container">
@@ -79,10 +95,11 @@ export default function ShowProduct({ url }) {
                                 </option>))};
                     </select>
                 </ul>
-                    
-                {/* Aleksi lupas hoitaa tän kuva-inputin ↧ */}
-               {/*<ul><img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product?.tuotenro + ".jpg"} alt={product.tuotenimi} /></ul>*/}
-                <ul><button type="submit" className="btn btn-outline-dark">Päivitä</button></ul>
+                
+              <ul><input type="file" className='form-control' name='upload_file' onChange={handleFileSelect} /></ul>
+              <ul><img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + params.productID + ".jpg"} alt={tuotenimi} /></ul>
+              
+              <ul><button type="submit" className="btn btn-outline-dark">Päivitä</button></ul>
             </div>
             </form>
             
