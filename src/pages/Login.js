@@ -125,18 +125,18 @@ export default function Login({ url, login }) {
             {method === "with-email" ?
               <div className="mb-3">
                 <label htmlFor="email" className="form-label">Sähköposti</label>
-                <input type="text" name="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
+                <input type="text" name="email" id="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
               </div>
               :
               <div className="mb-3">
                 <label htmlFor="username" className="form-label">Käyttäjätunnus</label>
-                <input type="text" name="username" className="form-control" onChange={e => setUsername(e.target.value)} required />
+                <input type="text" name="username" id="username" className="form-control" onChange={e => setUsername(e.target.value)} required />
               </div>
             }
 
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Salasana</label>
-              <input type="password" name="password" className="form-control" onChange={e => setPassword(e.target.value)} required />
+              <input type="password" name="password" id="password" className="form-control" onChange={e => setPassword(e.target.value)} required />
             </div>
             <button type="submit" className="btn btn-accent">Kirjaudu sisään</button>
           </form>
