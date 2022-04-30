@@ -18,8 +18,8 @@ export default function Breadcrumb({ url, categories }) {
   // Tämä tarkistaa pitääkö polun näyttönimi hakea muualta vai riittääkö sen oma nimi
   function typeCheck(item, index, pname) {
     // Lisää tähän listaan nimet joille ei tarvita erillisiä lapsia. Päivitä myös alempaan taulukkoon näytettävä arvo.
-    let singleCrumbs = ["haku", "admin", "ostoskori", "kaikki-tuotteet", "ota-yhteytta", "yhteenveto-tilauksesta"];
-    let singleCrumbsPrettier = ["Haku", "Admin", "Ostoskori", "Kaikki Tuotteet", "Ota Yhteyttä", "Yhteenveto tilauksesta"];
+    let singleCrumbs = ["haku", "admin", "ostoskori", "kaikki-tuotteet", "ota-yhteytta", "yhteenveto-tilauksesta", "rekisteroidy", "kirjaudu", "omat-tiedot"];
+    let singleCrumbsPrettier = ["Haku", "Admin", "Ostoskori", "Kaikki Tuotteet", "Ota Yhteyttä", "Yhteenveto tilauksesta", "Rekisteröidy", "Kirjaudu", "Omat tiedot"];
 
     for (let index = 0; index < singleCrumbs.length; index++) {
       if (item === singleCrumbs[index]) {
