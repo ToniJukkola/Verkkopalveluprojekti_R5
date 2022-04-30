@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-export default function Products({ url, addToCart, amount }) {
+export default function Products({ url, addToCart }) {
   const [categoryName, setCategoryName] = useState("");
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

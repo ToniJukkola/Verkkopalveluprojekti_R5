@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cart from './Cart';
+import LoginNav from './LoginNav';
 
-export default function Navbar({ shopname, cart, categories }) {
+export default function Navbar({ shopname, cart, categories, token, setToken }) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export default function Navbar({ shopname, cart, categories }) {
             <Link to={"/haku/" + searchTerm} className="btn btn-secondary btn-search" type="submit"><i className="bi bi-search"></i></Link>
           </form>
           <div className="navbar-icons">
-            <Link className="bi bi-person-circle" to={"/kirjaudu/"}></Link>
+          <LoginNav token={token} setToken={setToken} />
             <Link to={"/ostoskori"}><Cart cart={cart} /></Link>
           </div>
         </div>

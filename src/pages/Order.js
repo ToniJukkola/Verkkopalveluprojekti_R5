@@ -104,7 +104,6 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   function handleZip() {
     axios.get(url + "order/zipcodes.php/" + zip)
       .then((response) => {
-        console.log(response.data);
         setCity(response.data["toimipaikka"])
       }).catch(error => {
         alert(error.response === undefined ? error : error.response.data.error);
@@ -149,7 +148,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
             <input type="text" name="lastname" className="form-control" onChange={e => setLastname(e.target.value)} required />
           </div>
           <div className="mb-3">
-            <label htmlFor="address" className="form-label">Sähköposti</label>
+            <label htmlFor="email" className="form-label">Sähköposti</label>
             <input type="text" name="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
           </div>
           <div className="mb-3">

@@ -14,19 +14,20 @@ import Product from "./pages/Product";
 import ProductsAll from "./pages/ProductsAll";
 import Order from './pages/Order';
 import Search from './pages/Search';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
 import Admin from "./admin/Admin";
 import AddProduct from "./admin/AddProduct";
 import AddCategory from "./admin/AddCategory";
 import Edit from "./admin/Edit";
 import EditProduct from "./admin/EditProduct";
-import Register from "./pages/RegisterForm";
-import Login from './comp/Login';
-
 
 const SHOP_NAME = "Vihervaja";
 const BACKEND_URL = "http://localhost/verkkopalveluprojekti_r5_backend/";
 
 function App() {
+  // --- Kategorioiden haku naviin, footeriin ja admin-paneeliin
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -38,6 +39,20 @@ function App() {
         alert(error.response === undefined ? error : error.response.data.error);
       })
   }, []);
+
+  // --- Kirjautuminen
+  const [token, setToken] = useState("");
+
+  function login(userToken) {
+    sessionStorage.setItem("token", JSON.stringify(userToken));
+    setToken(JSON.parse(sessionStorage.getItem("token")));
+  }
+
+  useEffect(() => {
+    if ("token" in sessionStorage) {
+      setToken(JSON.parse(sessionStorage.getItem("token")));
+    }
+  }, [])
 
   // --- Ostoskorihommat alkaa
   const [cart, setCart] = useState([]);
@@ -82,17 +97,20 @@ function App() {
     localStorage.removeItem("cart");
   }
   // --- Ostoskorihommat päättyy
-
+  
   return (
     <>
       <div className="wrapper">
         <Router>
           <header>
-            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} />
+            <Navbar url={BACKEND_URL} shopname={SHOP_NAME} cart={cart} categories={categories} token={token} setToken={setToken} />
             <Breadcrumb url={BACKEND_URL} categories={categories} />
           </header>
 
           <Routes>
+            <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
+            <Route path="/kirjaudu" element={<Login url={BACKEND_URL} login={login} token={token} />} />
+            <Route path="/kirjaudu-ulos" element={<Logout />} />
             <Route path="/" element={<Home url={BACKEND_URL} />} />
             <Route path="/ota-yhteytta" element={<Contact />} />
             <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
@@ -100,10 +118,8 @@ function App() {
             <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
             <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
             <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
-            <Route path="/rekisteroidy" element={<Register url={BACKEND_URL} />} />
-            <Route path="/kirjaudu" element={<Login url={BACKEND_URL} />} />
 
-            
+
             {/* ----- ADMIN */}
             <Route path="/Admin" element={<Admin url={BACKEND_URL} />} />
             <Route path="/Admin/AddProduct" element={<AddProduct url={BACKEND_URL} />} />
