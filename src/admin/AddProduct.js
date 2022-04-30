@@ -49,8 +49,7 @@ export default function AddProduct({ url }) {
                 data.append('file', selectedFile[0]);
                 data.append("tuotenro", response.data.tuotenro)
                 axios.post(url + "admin/save_img.php", data)
-                .then((response) => {
-                }).catch(error => {
+                .catch(error => {
                     alert(error.response ? error.response.data.error : error);
                 });
                 setName('');
@@ -59,6 +58,7 @@ export default function AddProduct({ url }) {
                 setOthername('');
                 setPrice('');  
                 setCategory(1);
+                setSelectedFile(null);
                 axios.get(url + "products/get_products-all.php")
                 .then((response) => {
                     setProducts(response.data);
