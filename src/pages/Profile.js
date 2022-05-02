@@ -19,7 +19,6 @@ export default function Profile({ url, token }) {
       .then((response) => {
         setUserData(response.data);
         setUserBasics(response.data);
-        // setUserContact(response.data.sposti, response.data.osoite, response.data.postinro, response.data.postitmp);
         setEmail(response.data.sposti);
         setAddress(response.data.osoite);
         setZip(response.data.postinro);

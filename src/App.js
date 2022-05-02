@@ -121,7 +121,7 @@ function App() {
               <Route path="/tuotteet/:categoryID" element={<Products url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
               <Route path="/kaikki-tuotteet" element={<ProductsAll url={BACKEND_URL} addToCart={addToCart} amount={amount} />} />
               <Route path="/tuotteet/:categoryID/tuote/:productID" element={<Product url={BACKEND_URL} addToCart={addToCart} amount={amount} setAmount={setAmount} />} />
-              <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} />} />
+              <Route path="/ostoskori" element={<Order url={BACKEND_URL} cart={cart} removeFromCart={removeFromCart} updateAmount={updateAmount} emptyCart={emptyCart} token={token} />} />
               <Route path="/haku/:searchTerm" element={<Search url={BACKEND_URL} addToCart={addToCart} />} />
               <Route path="/omat-tiedot" element={<Profile url={BACKEND_URL} token={token} />} />
 
