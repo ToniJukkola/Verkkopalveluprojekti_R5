@@ -17,6 +17,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   const [zipError, setZipError] = useState("");
   const [isFinished, setIsFinished] = useState(false);
   const [orderID, setOrderID] = useState("");
+  const [customerId, setCustomerId] = useState("");
 
   let sum = 0;
 
@@ -33,18 +34,21 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
   }, [cart, inputIndex, inputs])
 
   useEffect(() => {
-    // Haetaan käyttäjätiedot backendistä
-    axios.get(url + "users/get_own-info.php/" + token)
-      .then((response) => {
-        setFirstname(response.data.etunimi);
-        setLastname(response.data.sukunimi);
-        setEmail(response.data.sposti);
-        setAddress(response.data.osoite);
-        setZip(response.data.postinro);
-        setCity(response.data.postitmp);
-      }).catch(error => {
-        alert(error.response === undefined ? error : error.response.data.error);
-      })
+    if (token) {
+      // Haetaan käyttäjätiedot backendistä
+      axios.get(url + "users/get_own-info.php/" + token)
+        .then((response) => {
+          setFirstname(response.data.etunimi);
+          setLastname(response.data.sukunimi);
+          setEmail(response.data.sposti);
+          setAddress(response.data.osoite);
+          setZip(response.data.postinro);
+          setCity(response.data.postitmp);
+          setCustomerId(response.data.asiakasnro);
+        }).catch(error => {
+          alert(error.response === undefined ? error : error.response.data.error);
+        })
+    }
   }, [url, token])
 
   function changeAmount(e, product, index) {
@@ -52,10 +56,20 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
     setInputIndex(index);
   }
 
-  function sendOrder(e) {
-    e.preventDefault();
+  let json = JSON.stringify({
+    etunimi: firstname,
+    sukunimi: lastname,
+    sposti: email,
+    osoite: address,
+    postinro: zip,
+    postitmp: city,
+    ostoskori: cart
+  });
+  let apiUrl = url + "order/save_order.php";
 
-    const json = JSON.stringify({
+  if (token) {
+    json = JSON.stringify({
+      asiakasnro: customerId,
       etunimi: firstname,
       sukunimi: lastname,
       sposti: email,
@@ -64,7 +78,13 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
       postitmp: city,
       ostoskori: cart
     });
-    axios.post(url + "order/save_order.php", json, {
+    apiUrl = url + "order/save_order-logged-in.php";
+  }
+
+  function sendOrder(e) {
+    e.preventDefault();
+
+    axios.post(apiUrl, json, {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -183,30 +203,61 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
 
           <form className="mt-5" onSubmit={sendOrder}>
             <h3>Toimitustiedot</h3>
-            <div className="mb-3">
-              <label htmlFor="firstname" className="form-label">Etunimi</label>
-              <input type="text" name="firstname" id="firstname" className="form-control" defaultValue={firstname} onChange={e => setFirstname(e.target.value)} required />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="lastname" className="form-label">Sukunimi</label>
-              <input type="text" name="lastname" id="lastname" className="form-control" defaultValue={lastname} onChange={e => setLastname(e.target.value)} required />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">Sähköposti</label>
-              <input type="text" name="email" id="email" className="form-control" defaultValue={email} onChange={e => setEmail(e.target.value)} required />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="address" className="form-label">Katuosoite</label>
-              <input type="text" name="address" id="address" className="form-control" defaultValue={address} onChange={e => setAddress(e.target.value)} required />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="zip" className="form-label">Postinumero</label>
-              <input type="text" name="zip" id="zip" className="form-control" defaultValue={zip} onChange={e => setZip(e.target.value)} onBlur={handleZip} required />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="city" className="form-label">Postitoimipaikka</label>
-              <input type="text" name="city" id="city" defaultValue={city} className="form-control" required disabled />
-            </div>
+            {!token ?
+              <>
+                <div className="mb-3">
+                  <label htmlFor="firstname" className="form-label">Etunimi</label>
+                  <input type="text" name="firstname" id="firstname" className="form-control" onChange={e => setFirstname(e.target.value)} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="lastname" className="form-label">Sukunimi</label>
+                  <input type="text" name="lastname" id="lastname" className="form-control" onChange={e => setLastname(e.target.value)} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Sähköposti</label>
+                  <input type="text" name="email" id="email" className="form-control" onChange={e => setEmail(e.target.value)} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="address" className="form-label">Katuosoite</label>
+                  <input type="text" name="address" id="address" className="form-control" onChange={e => setAddress(e.target.value)} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="zip" className="form-label">Postinumero</label>
+                  <input type="text" name="zip" id="zip" className="form-control" onChange={e => setZip(e.target.value)} onBlur={handleZip} required />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="city" className="form-label">Postitoimipaikka</label>
+                  <input type="text" name="city" id="city" className="form-control" required disabled />
+                </div>
+              </>
+              :
+              <div className="mb-3">
+                <ol className="list-group list-group">
+                  <li className="list-group-item d-flex justify-content-between align-items-start">
+                    <div className="ms-2 me-auto">
+                      <div className="fw-bold">Vastaanottaja</div>
+                      {firstname} {lastname}
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between align-items-start">
+                    <div className="ms-2 me-auto">
+                      <div className="fw-bold">Sähköposti</div>
+                      {email}
+                    </div>
+                  </li>
+                  <li className="list-group-item d-flex justify-content-between align-items-start">
+                    <div className="ms-2 me-auto">
+                      <div className="fw-bold">Toimitusosoite</div>
+                      {address}<br/>
+                      {zip} {city}<br/>
+                    </div>
+                  </li>
+                </ol>
+                <div className="mt-3 alert alert-secondary">
+                  Voit muuttaa osoitetietojasi <Link to={"/omat-tiedot"}>omassa profiilissasi.</Link>
+                </div>
+              </div>
+            }
             <button type="submit" className="btn btn-dark">Lähetä tilaus</button>
           </form>
 
