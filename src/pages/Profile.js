@@ -1,5 +1,4 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import MyOrders from '../comp/MyOrders'
 import MyInfo from '../comp/MyInfo'
 
