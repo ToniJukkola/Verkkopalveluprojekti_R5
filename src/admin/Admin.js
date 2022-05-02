@@ -7,6 +7,7 @@ export default function Admin({ url }) {
         <main className="container">
             <div>
                 <h1>Tervetuloa ylläpitäjä!</h1>
+                <h2>Hallitse tuotteita ja tuoteryhmiä</h2>
 
                 <div className="d-grid gap-3 justify-content-start">
                     <Link className="btn btn-outline-dark" to={"/admin/addproduct/"}>Lisää tuote</Link>
@@ -17,6 +18,7 @@ export default function Admin({ url }) {
             </div>
 
             <div className="mt-5">
+            <h2>Hallitse tilauksia</h2>
                 <Orderlist url={url} />
             </div>
         </main>
