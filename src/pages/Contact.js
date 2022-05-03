@@ -15,18 +15,15 @@ export default function Contact() {
 <input type="text" className="form-control" id="inputName" placeholder="Nimi"/>
 </div>
 <div className="form-group">
-<label htmlFor="exampleInputEmail1">Sähköposti</label>
+<label htmlFor="InputEmail1">Sähköposti</label>
 <input type="email" className="form-control" id="inputEmail" placeholder="Syötä sähköposti"></input>
 </div>
 <div className="form-group">
-<label htmlFor="exampleInputPassword1">Password</label>
-<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+<label htmlFor="InputInfo">Viesti</label>
+<input type="text" className="form-control" id="InputInfo" placeholder="Syötä viesti"/>
 </div>
-<div className="form-check">
-<input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-<label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-</div>
-<button type="submit" className="btn btn-primary">Submit</button>
+
+<button type="submit" className="btn btn-primary">Lähetä</button>
 </form>
   </main>
     );
