@@ -141,7 +141,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
     }
 
     // Tarkistetaan ettei postinumero ole virheellinen
-    if (zipError) {
+    if (zipError || city == "!! VIRHEELLINEN POSTINUMERO !!") {
       setError(zipError);
       return false;
     }
@@ -227,7 +227,7 @@ export default function Order({ url, cart, removeFromCart, updateAmount, emptyCa
                 </div>
                 <div className="mb-3">
                   <label htmlFor="city" className="form-label">Postitoimipaikka</label>
-                  <input type="text" name="city" id="city" className="form-control" required disabled />
+                  <input type="text" defaultValue={city} name="city" id="city" className="form-control" required disabled />
                 </div>
               </>
               :
