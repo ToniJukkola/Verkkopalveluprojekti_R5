@@ -35,7 +35,7 @@ export default function Search({ url, addToCart }) {
                   <Link to={"/tuotteet/" + product.trnro + "/tuote/" + product.tuotenro}>Lue lisää</Link>
                 </p>
   
-                <button className="btn btn-accent" onClick={e => addToCart(product)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
+                <button className="btn btn-accent" onClick={e => addToCart(product, 1)}><i className="bi bi-bag-fill"></i> Lisää ostoskoriin</button>
               </div>
             </div>
           ))}
