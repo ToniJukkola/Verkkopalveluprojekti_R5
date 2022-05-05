@@ -97,7 +97,7 @@ export default function ShowProduct({ url }) {
                 </ul>
                 
               <ul><input type="file" className='form-control' name='upload_file' onChange={handleFileSelect} /></ul>
-              <ul><img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + params.productID + ".jpg"} alt={tuotenimi} /></ul>
+              <ul><img className="img-thumbnail" src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + params.productID + ".jpg"} alt={tuotenimi} /></ul>
               
               <ul><button type="submit" className="btn btn-outline-dark">Päivitä</button></ul>
             </div>

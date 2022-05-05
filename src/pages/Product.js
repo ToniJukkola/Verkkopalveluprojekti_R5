@@ -22,7 +22,7 @@ export default function Product({ url, addToCart, amount, setAmount }) {
         <div>
           <h3 className='product_name'>{product.tuotenimi}</h3>
           <p className='scientific_name'>{product.tieteellinen_nimi}</p>
-          <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg"} alt={product.tuotenimi} className="img-thumbnail" />
+          <img src={"http://localhost/verkkopalveluprojekti_r5_backend/images/tuotenro_" + product.tuotenro + ".jpg?" + product.tuotenro} alt={product.tuotenimi} className="img-thumbnail" />
           <h4 className='price mt-3'>{product.hinta} €</h4>
         </div>
         <div className="text-center">
